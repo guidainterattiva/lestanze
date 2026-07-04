@@ -141,6 +141,10 @@ nav.sc #lang-btn:hover{background:var(--ink);color:var(--paper)}
 .struct-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.5,.2,1)}
 .struct-img:hover img{transform:scale(1.05)}
 .struct-img .veil{position:absolute;inset:0;background:linear-gradient(120deg,rgba(22,33,30,.28),rgba(22,33,30,.02))}
+.struct-img.logo{background:#fff;display:flex;align-items:center;justify-content:center}
+.struct-img.logo img{position:static;width:auto;height:auto;max-width:min(72%,420px);max-height:72%;object-fit:contain}
+.struct-img.logo .veil{display:none}
+.struct-img.logo:hover img{transform:scale(1.03)}
 .struct-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(2.6rem,6vw,5rem)}
 .struct-txt .plaque{margin-bottom:1.5rem}
 .struct h2{font-family:var(--ser);font-weight:300;font-size:clamp(2.1rem,4.5vw,3.4rem);margin:.3rem 0 1.1rem;line-height:1.1}
@@ -177,8 +181,7 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
 .ihero-c{position:relative;z-index:2;padding:0 clamp(1.6rem,6vw,5.5rem) clamp(2.4rem,5vw,3.6rem);width:100%;display:flex;flex-direction:column;align-items:flex-start}
 .ihero h1{font-family:var(--ser);font-weight:300;font-size:clamp(2.4rem,6vw,4.6rem);color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3)}
 .ihero .eyebrow{color:#fff}.ihero .eyebrow::before{background:rgba(255,255,255,.7)}
-.ihero.typographic{background:var(--ink)}
-.ihero.typographic::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 20%,rgba(52,95,85,.4),transparent 60%)}
+.ihero.typographic{background:var(--ink);height:44vh;min-height:300px}
 
 /* DETAIL SECTIONS */
 .sec{padding:clamp(3.5rem,7vw,6rem) clamp(1.6rem,6vw,5.5rem);max-width:1240px;margin:0 auto}
@@ -395,7 +398,7 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
   </div>
 
   <section class="struct">
-    <div class="struct-img" onclick="sp('mds')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_017.jpeg?updatedAt=1774875897046" alt="MDS Properties"><div class="veil"></div></div>
+    <div class="struct-img" onclick="sp('mds')"><img src="https://ik.imagekit.io/2gkrpnbbol/IMG-20260409-WA0024.jpg?updatedAt=1775756556674" alt="MDS Properties"><div class="veil"></div></div>
     <div class="struct-txt rev">
       <div class="plaque"><span>N.</span><b>I</b></div>
       <div class="eyebrow" data-it="Il gruppo · Property management" data-en="The group · Property management">Il gruppo · Property management</div>
@@ -409,7 +412,7 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
   </section>
 
   <section class="struct rv">
-    <div class="struct-img" onclick="sp('roma')"><img src="https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260421-WA0006.jpg?updatedAt=1776802156165" alt="Le Stanze di Roma"><div class="veil"></div></div>
+    <div class="struct-img logo" onclick="sp('roma')"><img src="https://ik.imagekit.io/2gkrpnbbol/logo.jpeg?updatedAt=1774808551223" alt="Le Stanze di Roma"><div class="veil"></div></div>
     <div class="struct-txt rev">
       <div class="plaque"><span>N.</span><b>II</b></div>
       <div class="eyebrow" data-it="Roma · Prati / Vaticano" data-en="Rome · Prati / Vatican">Roma · Prati / Vaticano</div>
@@ -423,12 +426,12 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
   </section>
 
   <section class="struct">
-    <div class="struct-img" onclick="sp('sharm')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_002.jpeg" alt="Le Stanze di Sharm"><div class="veil"></div></div>
+    <div class="struct-img logo" onclick="sp('sharm')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/logo_lestanzedisharm.jpeg?updatedAt=1775848524842" alt="Le Stanze di Sharm"><div class="veil"></div></div>
     <div class="struct-txt rev">
       <div class="plaque"><span>N.</span><b>III</b></div>
       <div class="eyebrow" data-it="Sharm el Sheikh · Coral Bay" data-en="Sharm el Sheikh · Coral Bay">Sharm el Sheikh · Coral Bay</div>
       <h2>Le Stanze di <em>Sharm</em></h2>
-      <p class="body-t" data-it="Camere e appartamenti nel cuore del Mar Rosso, all'interno del Domina Coral Bay. Assistenza italiana, transfer ed escursioni, a due passi dalla spiaggia." data-en="Rooms and apartments in the heart of the Red Sea, inside Domina Coral Bay. Italian-speaking assistance, transfers and excursions, steps from the beach.">Camere e appartamenti nel cuore del Mar Rosso, all'interno del Domina Coral Bay. Assistenza italiana, transfer ed escursioni, a due passi dalla spiaggia.</p>
+      <p class="body-t" data-it="Camere e appartamenti nel cuore del Mar Rosso, all'interno del Coral Bay. Assistenza italiana, transfer ed escursioni, a due passi dalla spiaggia." data-en="Rooms and apartments in the heart of the Red Sea, inside Coral Bay. Italian-speaking assistance, transfers and excursions, steps from the beach.">Camere e appartamenti nel cuore del Mar Rosso, all'interno del Coral Bay. Assistenza italiana, transfer ed escursioni, a due passi dalla spiaggia.</p>
       <div class="struct-cta">
         <div class="btn btn-line" onclick="sp('sharm')" data-it="Scopri" data-en="Discover">Scopri</div>
         <a class="link-u" href="https://lestanzedisharm.com/" target="_blank" rel="noopener"><span data-it="Visita il sito" data-en="Visit the site">Visita il sito</span> <span class="ar">↗</span></a>
@@ -480,9 +483,7 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
 
 <!-- ═══════════ MDS PROPERTIES ═══════════ -->
 <div id="page-mds" class="page">
-  <section class="ihero">
-    <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_019.jpeg?updatedAt=1774875897041" alt="MDS Properties">
-    <div class="ov"></div>
+  <section class="ihero typographic">
     <div class="ihero-c">
       <div class="back" onclick="goBack()">← <span data-it="Indietro" data-en="Back">Indietro</span></div>
       <div class="eyebrow" data-it="Il gruppo" data-en="The group">Il gruppo</div>
@@ -532,9 +533,7 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
 
 <!-- ═══════════ LE STANZE DI ROMA ═══════════ -->
 <div id="page-roma" class="page">
-  <section class="ihero">
-    <img src="https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260421-WA0006.jpg?updatedAt=1776802156165" alt="Le Stanze di Roma">
-    <div class="ov"></div>
+  <section class="ihero typographic">
     <div class="ihero-c">
       <div class="back" onclick="goBack()">← <span data-it="Indietro" data-en="Back">Indietro</span></div>
       <div class="eyebrow" data-it="Roma · Prati / Vaticano" data-en="Rome · Prati / Vatican">Roma · Prati / Vaticano</div>
@@ -553,13 +552,14 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
   <section class="sec stone"><div class="inner">
     <div class="room-hd">
       <div class="rev"><div class="eyebrow" data-it="Le stanze" data-en="The rooms">Le stanze</div><h2 class="h2" data-it="Roma · <em>tre indirizzi</em>" data-en="Rome · <em>three addresses</em>">Roma · <em>tre indirizzi</em></h2></div>
+      <span class="body-t rev" data-it="Clicca per la galleria" data-en="Click for the gallery">Clicca per la galleria</span>
     </div>
     <div class="room-g rev">
-      <div class="room-c ph"><div class="r-tag soon" data-it="Foto in arrivo" data-en="Photos coming">Foto in arrivo</div><div class="r-ov"><div class="r-loc">Prati · Vaticano</div><div class="r-nm">Via <em>Ottaviano</em></div><div class="r-ds" data-it="A due passi da San Pietro e dai Musei Vaticani" data-en="Steps from St Peter's and the Vatican Museums">A due passi da San Pietro e dai Musei Vaticani</div></div></div>
-      <div class="room-c ph"><div class="r-tag soon" data-it="Foto in arrivo" data-en="Photos coming">Foto in arrivo</div><div class="r-ov"><div class="r-loc">Aurelio · San Pietro</div><div class="r-nm">Via <em>Gregorio VII</em></div><div class="r-ds" data-it="Zona servita e comoda, vicino al Vaticano" data-en="Well-connected area, close to the Vatican">Zona servita e comoda, vicino al Vaticano</div></div></div>
-      <div class="room-c ph"><div class="r-tag soon" data-it="Foto in arrivo" data-en="Photos coming">Foto in arrivo</div><div class="r-ov"><div class="r-loc">Prati</div><div class="r-nm">Via <em>Angelo Emo</em></div><div class="r-ds" data-it="Ideale per turismo e lavoro" data-en="Ideal for tourism and business">Ideale per turismo e lavoro</div></div></div>
+      <div class="room-c" onclick="openGal('ottaviano')"><img src="https://ik.imagekit.io/2gkrpnbbol/Via%20ottaviano/IMG-20260531-WA0075.jpg?updatedAt=1781850787126" alt="Via Ottaviano"><div class="r-ov"><div class="r-loc">Prati · Vaticano</div><div class="r-nm">Via <em>Ottaviano</em></div><div class="r-ds" data-it="A due passi da San Pietro e dai Musei Vaticani" data-en="Steps from St Peter's and the Vatican Museums">A due passi da San Pietro e dai Musei Vaticani</div><div class="r-go" data-it="Vedi galleria →" data-en="View gallery →">Vedi galleria →</div></div></div>
+      <div class="room-c" onclick="openGal('gregorio')"><img src="https://ik.imagekit.io/2gkrpnbbol/Via%20Gregorio%20vii/IMG-20260617-WA0010.jpg?updatedAt=1781847560529" alt="Via Gregorio VII"><div class="r-ov"><div class="r-loc">Aurelio · San Pietro</div><div class="r-nm">Via <em>Gregorio VII</em></div><div class="r-ds" data-it="Zona servita e comoda, vicino al Vaticano" data-en="Well-connected area, close to the Vatican">Zona servita e comoda, vicino al Vaticano</div><div class="r-go" data-it="Vedi galleria →" data-en="View gallery →">Vedi galleria →</div></div></div>
+      <div class="room-c" onclick="openGal('emo')"><img src="https://ik.imagekit.io/2gkrpnbbol/Via%20angelo%20emo/IMG-20260617-WA0034.jpg?updatedAt=1781849779245" alt="Via Angelo Emo"><div class="r-ov"><div class="r-loc">Prati</div><div class="r-nm">Via <em>Angelo Emo</em></div><div class="r-ds" data-it="Ideale per turismo e lavoro" data-en="Ideal for tourism and business">Ideale per turismo e lavoro</div><div class="r-go" data-it="Vedi galleria →" data-en="View gallery →">Vedi galleria →</div></div></div>
     </div>
-    <p class="body-t rev" style="margin-top:1.6rem;font-style:italic" data-it="Le stanze disponibili, le foto e i prezzi aggiornati sono sul sito ufficiale, con prenotazione diretta e senza commissioni." data-en="Available rooms, photos and up-to-date prices are on the official site, with direct booking and no commissions.">Le stanze disponibili, le foto e i prezzi aggiornati sono sul sito ufficiale, con prenotazione diretta e senza commissioni.</p>
+    <p class="body-t rev" style="margin-top:1.6rem;font-style:italic" data-it="Disponibilità e prezzi aggiornati sono sul sito ufficiale, con prenotazione diretta e senza commissioni." data-en="Availability and up-to-date prices are on the official site, with direct booking and no commissions.">Disponibilità e prezzi aggiornati sono sul sito ufficiale, con prenotazione diretta e senza commissioni.</p>
   </div></section>
   <section class="sec">
     <div class="eyebrow rev" data-it="Servizi" data-en="Services">Servizi</div>
@@ -571,10 +571,6 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
       <div class="svc"><div class="n">✦</div><h3 data-it="Gite e tour" data-en="Trips &amp; tours">Gite e tour</h3><p data-it="Itinerari nella città eterna e nei dintorni, su richiesta." data-en="Itineraries in the Eternal City and surroundings, on request.">Itinerari nella città eterna e nei dintorni, su richiesta.</p></div>
       <div class="svc"><div class="n">✦</div><h3 data-it="Golf Car in città" data-en="Golf Car in the city">Golf Car in città</h3><p data-it="Tour di Roma comodi e originali a bordo di golf car elettriche." data-en="Comfortable, original tours of Rome aboard electric golf cars.">Tour di Roma comodi e originali a bordo di golf car elettriche.</p></div>
       <div class="svc"><div class="n">✦</div><h3 data-it="Accordi ristoranti" data-en="Restaurant deals">Accordi ristoranti</h3><p data-it="Convenzioni con ristoranti selezionati per i nostri ospiti." data-en="Partnerships with selected restaurants for our guests.">Convenzioni con ristoranti selezionati per i nostri ospiti.</p></div>
-    </div>
-    <div class="strip rev">
-      <div class="g" onclick="openGal('roma')"><img src="https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260421-WA0006.jpg?updatedAt=1776802156165" alt="Golf Car Roma"></div>
-      <div class="g" onclick="openGal('roma')"><img src="https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260424-WA0001%281%29.jpg" alt="Check-in digitale"></div>
     </div>
   </section>
   <section class="backcta">
@@ -589,9 +585,7 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
 
 <!-- ═══════════ LE STANZE DI SHARM ═══════════ -->
 <div id="page-sharm" class="page">
-  <section class="ihero">
-    <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Le Stanze di Sharm">
-    <div class="ov"></div>
+  <section class="ihero typographic">
     <div class="ihero-c">
       <div class="back" onclick="goBack()">← <span data-it="Indietro" data-en="Back">Indietro</span></div>
       <div class="eyebrow" data-it="Sharm el Sheikh · Coral Bay" data-en="Sharm el Sheikh · Coral Bay">Sharm el Sheikh · Coral Bay</div>
@@ -602,7 +596,7 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
     <div class="intro-grid">
       <div class="rev"><div class="eyebrow" data-it="La struttura" data-en="The property">La struttura</div><div class="plaque"><span>N.</span><b>III</b></div></div>
       <div class="rev">
-        <p class="lead" data-it="Camere e appartamenti all'interno del prestigioso Domina Coral Bay, a Sharm el Sheikh: a due passi dal mare, con accesso a tutte le strutture del resort e assistenza completa in italiano." data-en="Rooms and apartments inside the prestigious Domina Coral Bay in Sharm el Sheikh: steps from the sea, with access to all resort facilities and full Italian-speaking assistance.">Camere e appartamenti all'interno del prestigioso Domina Coral Bay, a Sharm el Sheikh: a due passi dal mare, con accesso a tutte le strutture del resort e assistenza completa in italiano.</p>
+        <p class="lead" data-it="Camere e appartamenti all'interno del prestigioso Coral Bay, a Sharm el Sheikh: a due passi dal mare, con accesso a tutte le strutture del resort e assistenza completa in italiano." data-en="Rooms and apartments inside the prestigious Coral Bay in Sharm el Sheikh: steps from the sea, with access to all resort facilities and full Italian-speaking assistance.">Camere e appartamenti all'interno del prestigioso Coral Bay, a Sharm el Sheikh: a due passi dal mare, con accesso a tutte le strutture del resort e assistenza completa in italiano.</p>
         <p class="body-t" data-it="Transfer, escursioni e un punto di riferimento sempre disponibile: pensa solo a rilassarti sul Mar Rosso." data-en="Transfers, excursions and a reference point always available: just focus on relaxing by the Red Sea.">Transfer, escursioni e un punto di riferimento sempre disponibile: pensa solo a rilassarti sul Mar Rosso.</p>
       </div>
     </div>
@@ -705,7 +699,7 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
       <div class="cc">
         <div class="ic" style="display:flex;align-items:center;justify-content:center;font-family:var(--ser);font-style:italic;font-size:1.8rem;color:var(--verd)">S</div>
         <h3>Le Stanze di Sharm</h3>
-        <div class="sub" data-it="Domina Coral Bay · Sharm el Sheikh" data-en="Domina Coral Bay · Sharm el Sheikh">Domina Coral Bay · Sharm el Sheikh</div>
+        <div class="sub" data-it="Coral Bay · Sharm el Sheikh" data-en="Coral Bay · Sharm el Sheikh">Coral Bay · Sharm el Sheikh</div>
         <div class="cc-links"><a href="https://lestanzedisharm.com/" target="_blank" rel="noopener">Sito ↗</a><a href="https://www.instagram.com/lestanzedisharm" target="_blank" rel="noopener">Instagram</a></div>
       </div>
     </div>
@@ -765,9 +759,26 @@ const GAL = {
   angela:['https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887'],
   ornello:['https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0026.jpg?updatedAt=1774976341620'],
   giusy:['https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912'],
-  roma:[
-    'https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260421-WA0006.jpg?updatedAt=1776802156165',
-    'https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260424-WA0001%281%29.jpg'
+  ottaviano:[
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20ottaviano/IMG-20260531-WA0075.jpg?updatedAt=1781850787126',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20ottaviano/IMG-20260531-WA0085.jpg?updatedAt=1781850786577',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20ottaviano/IMG-20260601-WA0003.jpg?updatedAt=1781850786878',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20ottaviano/IMG-20260531-WA0045.jpg?updatedAt=1781850786787',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20ottaviano/IMG-20260531-WA0055.jpg?updatedAt=1781850786630'
+  ],
+  gregorio:[
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20Gregorio%20vii/IMG-20260617-WA0010.jpg?updatedAt=1781847560529',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20Gregorio%20vii/IMG-20260617-WA0002.jpg?updatedAt=1781847560537',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20Gregorio%20vii/IMG-20260617-WA0006.jpg?updatedAt=1781847560288',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20Gregorio%20vii/IMG-20260617-WA0005.jpg?updatedAt=1781847560295',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20Gregorio%20vii/IMG-20260617-WA0001.jpg?updatedAt=1781847560191'
+  ],
+  emo:[
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20angelo%20emo/IMG-20260617-WA0034.jpg?updatedAt=1781849779245',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20angelo%20emo/IMG-20260617-WA0025.jpg?updatedAt=1781849779200',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20angelo%20emo/IMG-20260617-WA0050.jpg?updatedAt=1781849779256',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20angelo%20emo/IMG-20260617-WA0048.jpg?updatedAt=1781849779171',
+    'https://ik.imagekit.io/2gkrpnbbol/Via%20angelo%20emo/IMG-20260617-WA0053.jpg?updatedAt=1781849779141'
   ]
 };
 
