@@ -10,16 +10,9 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#16211E;        /* bronzo/carboncino romano */
-  --ink-soft:#24322E;
-  --stone:#F1ECE1;      /* travertino */
-  --paper:#FBF9F3;      /* carta chiara */
-  --verd:#345F55;       /* verderame — accento firma */
-  --verd-2:#4C7d72;
-  --clay:#A85D43;       /* terracotta — micro accento Roma */
-  --muted:#5C625B;
-  --line:rgba(22,33,30,.15);
-  --line-w:rgba(255,255,255,.22);
+  --ink:#16211E;--ink-soft:#24322E;--stone:#F1ECE1;--paper:#FBF9F3;
+  --verd:#345F55;--verd-2:#4C7d72;--clay:#A85D43;--muted:#5C625B;
+  --line:rgba(22,33,30,.15);--line-w:rgba(255,255,255,.22);
   --ser:'Fraunces',Georgia,'Times New Roman',serif;
   --san:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
@@ -30,7 +23,6 @@ img{display:block;max-width:100%}
 em{font-style:italic}
 ::selection{background:var(--verd);color:#fff}
 
-/* ─── TYPO HELPERS ─── */
 .eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--verd);
   display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.1rem}
 .eyebrow::before{content:'';width:26px;height:1px;background:var(--verd)}
@@ -38,20 +30,16 @@ em{font-style:italic}
 .eyebrow.on-dark{color:#C9D6CF}.eyebrow.on-dark::before{background:rgba(201,214,207,.6)}
 .eyebrow.no-rule::before{display:none}
 h1,h2,h3{font-family:var(--ser);font-weight:300;line-height:1.1}
-.display{font-family:var(--ser);font-weight:300;font-size:clamp(3.4rem,10vw,8rem);line-height:.95;letter-spacing:-.015em}
 .h2{font-family:var(--ser);font-weight:300;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.12;letter-spacing:-.01em}
 .lead{font-size:clamp(1rem,1.5vw,1.15rem);font-weight:400;color:var(--muted);line-height:1.85;max-width:52ch}
 .body-t{font-size:.95rem;color:var(--muted);line-height:1.85}
 
-/* ─── BUTTONS ─── */
 .btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--san);font-size:.62rem;font-weight:600;
   letter-spacing:.2em;text-transform:uppercase;padding:.95rem 1.9rem;cursor:pointer;border:1px solid transparent;
   transition:background .3s,color .3s,border-color .3s;white-space:nowrap}
 .btn .ar{font-size:.85rem;letter-spacing:0;transform:translateY(-.5px)}
-.btn-solid{background:var(--ink);color:var(--paper)}
-.btn-solid:hover{background:var(--verd)}
-.btn-verd{background:var(--verd);color:#fff}
-.btn-verd:hover{background:var(--verd-2)}
+.btn-solid{background:var(--ink);color:var(--paper)}.btn-solid:hover{background:var(--verd)}
+.btn-verd{background:var(--verd);color:#fff}.btn-verd:hover{background:var(--verd-2)}
 .btn-line{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn-line:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
 .btn-ghost{background:transparent;color:#fff;border-color:var(--line-w)}
@@ -60,13 +48,18 @@ h1,h2,h3{font-family:var(--ser);font-weight:300;line-height:1.1}
   border-bottom:1px solid var(--ink);padding-bottom:2px;cursor:pointer;transition:color .25s,border-color .25s;display:inline-flex;gap:.4rem;align-items:center}
 .link-u:hover{color:var(--verd);border-color:var(--verd)}
 
-/* signature PLAQUE */
 .plaque{display:inline-flex;flex-direction:column;align-items:center;gap:.2rem;border:1px solid var(--verd);
   color:var(--verd);padding:.55rem 1rem;line-height:1}
 .plaque span{font-size:.48rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase}
 .plaque b{font-family:var(--ser);font-size:1.35rem;font-style:italic;font-weight:400}
 
-/* ─── NAV ─── */
+/* back button (on inner heroes) */
+.back{display:inline-flex;align-items:center;gap:.45rem;font-size:.58rem;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:#fff;opacity:.85;cursor:pointer;margin-bottom:1.2rem;
+  border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:3px;transition:opacity .2s;align-self:flex-start;width:max-content}
+.back:hover{opacity:1}
+
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:70px;display:flex;align-items:center;
   justify-content:space-between;padding:0 clamp(1.1rem,4vw,2.4rem);gap:1rem;transition:background .4s,border-color .4s;
   border-bottom:1px solid transparent}
@@ -82,19 +75,14 @@ nav.sc .brand img{border-color:var(--line)}
 .brand-t{font-family:var(--ser);font-size:1.05rem;font-weight:400;letter-spacing:.02em;color:#fff;transition:color .4s;white-space:nowrap}
 nav.sc .brand-t{color:var(--ink)}
 .nav-r{display:flex;align-items:center;gap:.55rem}
-#lang-btn{background:none;border:1px solid rgba(255,255,255,.45);color:#fff;font-family:var(--san);font-size:.56rem;
-  font-weight:600;letter-spacing:.16em;padding:.5rem .7rem;cursor:pointer;transition:all .3s}
+#lang-btn{background:none;border:1px solid rgba(255,255,255,.45);color:#fff;font-family:var(--san);font-size:.58rem;
+  font-weight:600;letter-spacing:.16em;padding:.5rem .8rem;cursor:pointer;transition:all .3s}
 #lang-btn:hover{background:rgba(255,255,255,.14)}
 nav.sc #lang-btn{color:var(--ink);border-color:var(--line)}
 nav.sc #lang-btn:hover{background:var(--ink);color:var(--paper)}
-.nav-wa{display:inline-flex;align-items:center;gap:.45rem;font-size:.56rem;font-weight:600;letter-spacing:.16em;
-  text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.45);padding:.5rem .9rem;transition:all .3s}
-.nav-wa:hover{background:rgba(255,255,255,.14)}
-nav.sc .nav-wa{color:var(--ink);border-color:var(--line)}
-nav.sc .nav-wa:hover{background:var(--verd);border-color:var(--verd);color:#fff}
-@media(max-width:620px){.brand-t{font-size:.92rem}.nav-wa span{display:none}}
+@media(max-width:620px){.brand-t{font-size:.92rem}}
 
-/* ─── MENU DRAWER ─── */
+/* MENU */
 .mo{display:none;position:fixed;inset:0;background:rgba(22,33,30,.5);z-index:290;cursor:pointer}
 .mo.on{display:block}
 .mm{position:fixed;top:0;right:0;bottom:0;width:min(360px,86vw);background:var(--paper);z-index:300;
@@ -105,100 +93,94 @@ nav.sc .nav-wa:hover{background:var(--verd);border-color:var(--verd);color:#fff}
 .mm-hd .brand-t{color:var(--ink)}
 .mm-x{background:none;border:none;font-size:1.9rem;cursor:pointer;color:var(--ink);line-height:1;padding:4px 8px}
 .mm a{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
-  padding:1.15rem 0;border-bottom:1px solid var(--line);cursor:pointer;transition:color .2s;display:flex;
+  padding:1.1rem 0;border-bottom:1px solid var(--line);cursor:pointer;transition:color .2s;display:flex;
   align-items:center;justify-content:space-between}
 .mm a small{font-family:var(--ser);font-style:italic;font-size:.72rem;letter-spacing:0;text-transform:none;color:var(--verd);font-weight:400}
 .mm a:hover{color:var(--verd)}
-.mm-cta{margin-top:1.6rem;background:var(--verd);color:#fff;padding:1rem;text-align:center;font-size:.62rem;
+.mm-cta{margin-top:1.5rem;background:var(--verd);color:#fff;padding:1rem;text-align:center;font-size:.62rem;
   font-weight:600;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .25s}
 .mm-cta:hover{background:var(--verd-2)}
 .mm-info{margin-top:1.4rem;font-size:.72rem;color:var(--muted);line-height:1.7}
 .mm-info a{color:var(--verd);font-weight:600;padding:0;border:none;display:inline}
 
-/* ─── PAGES ─── */
+/* PAGES */
 .page{display:none}.page.on{display:block;animation:fade .5s ease}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 
-/* ─── HERO ─── */
+/* HERO */
 .hero{height:100svh;min-height:600px;position:relative;overflow:hidden;display:flex;align-items:flex-end;color:#fff}
-.hero-bg{position:absolute;inset:0;background:center/cover no-repeat;animation:hz 12s ease-out forwards}
+.hero-art{position:absolute;inset:0;width:100%;height:100%;animation:hz 16s ease-out forwards}
 @keyframes hz{from{transform:scale(1.06)}to{transform:scale(1)}}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,33,30,.42) 0%,rgba(22,33,30,.12) 38%,rgba(22,33,30,.8) 100%)}
-.hero-frame{position:absolute;inset:clamp(14px,2.2vw,26px);border:1px solid rgba(255,255,255,.28);pointer-events:none;z-index:2}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,33,30,.25) 0%,rgba(22,33,30,.05) 42%,rgba(15,22,19,.72) 100%)}
+.hero-frame{position:absolute;inset:clamp(14px,2.2vw,26px);border:1px solid rgba(255,255,255,.24);pointer-events:none;z-index:2}
 .hero-c{position:relative;z-index:3;width:100%;padding:0 clamp(1.6rem,6vw,5.5rem) clamp(3.5rem,7vw,6rem);animation:up 1s .15s both}
 @keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 .hero .eyebrow{color:#fff}.hero .eyebrow::before{background:rgba(255,255,255,.7)}
-.hero h1{font-size:clamp(3.6rem,13vw,9rem);color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.28);margin-bottom:.4rem}
+.hero h1{font-family:var(--ser);font-weight:300;font-size:clamp(3.6rem,13vw,9rem);line-height:.95;letter-spacing:-.015em;
+  color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.35);margin-bottom:.4rem}
 .hero-sub{font-family:var(--ser);font-style:italic;font-weight:300;font-size:clamp(1.05rem,2.4vw,1.5rem);
-  color:rgba(255,255,255,.9);max-width:34ch;margin:.6rem 0 2rem;text-shadow:0 1px 10px rgba(0,0,0,.3)}
+  color:rgba(255,255,255,.92);max-width:34ch;margin:.6rem 0 2rem;text-shadow:0 1px 12px rgba(0,0,0,.4)}
 .hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
 .hero-tick{position:absolute;top:50%;right:clamp(20px,3vw,42px);transform:translateY(-50%) rotate(180deg);
-  writing-mode:vertical-rl;z-index:3;font-size:.55rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;
-  color:rgba(255,255,255,.55)}
+  writing-mode:vertical-rl;z-index:3;font-size:.55rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 @media(max-width:760px){.hero-tick{display:none}}
 
-/* ─── MANIFESTO ─── */
+/* MANIFESTO */
 .manifesto{background:var(--stone);padding:clamp(4.5rem,9vw,8rem) clamp(1.6rem,6vw,5.5rem)}
 .manifesto-in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,6vw,5rem);align-items:start}
 .manifesto p+p{margin-top:1.2rem}
-.manifesto .sig{margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);font-family:var(--ser);
-  font-style:italic;font-size:1.05rem;color:var(--ink)}
-.manifesto .sig small{display:block;font-family:var(--san);font-style:normal;font-size:.62rem;font-weight:600;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
+.manifesto .sig{margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);font-family:var(--ser);font-style:italic;font-size:1.05rem;color:var(--ink)}
+.manifesto .sig small{display:block;font-family:var(--san);font-style:normal;font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
 @media(max-width:820px){.manifesto-in{grid-template-columns:1fr;gap:1.5rem}}
 
-/* ─── COLLECTION ─── */
+/* COLLECTION */
 .coll-hd{text-align:center;padding:clamp(4rem,8vw,7rem) 1.6rem 2.5rem;background:var(--paper)}
 .struct{display:grid;grid-template-columns:1fr 1fr;min-height:min(88vh,720px);background:var(--paper)}
-.struct.rev{direction:rtl}.struct.rev>*{direction:ltr}
+.struct.rv{direction:rtl}.struct.rv>*{direction:ltr}
 .struct-img{position:relative;overflow:hidden;min-height:340px;cursor:pointer;background:var(--ink)}
 .struct-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.5,.2,1)}
 .struct-img:hover img{transform:scale(1.05)}
 .struct-img .veil{position:absolute;inset:0;background:linear-gradient(120deg,rgba(22,33,30,.28),rgba(22,33,30,.02))}
 .struct-txt{display:flex;flex-direction:column;justify-content:center;padding:clamp(2.6rem,6vw,5rem)}
 .struct-txt .plaque{margin-bottom:1.5rem}
-.struct h2{font-size:clamp(2.1rem,4.5vw,3.4rem);margin:.3rem 0 1.1rem}
+.struct h2{font-family:var(--ser);font-weight:300;font-size:clamp(2.1rem,4.5vw,3.4rem);margin:.3rem 0 1.1rem;line-height:1.1}
 .struct .body-t{max-width:44ch;margin-bottom:2rem}
 .struct-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
-@media(max-width:860px){.struct{grid-template-columns:1fr}.struct.rev{direction:ltr}
+@media(max-width:860px){.struct{grid-template-columns:1fr}.struct.rv{direction:ltr}
   .struct-img{min-height:56vw;max-height:420px;order:-1}}
 
-/* ─── BAND (dark contact) ─── */
+/* BAND */
 .band{background:var(--ink);color:#fff;padding:clamp(4.5rem,9vw,8rem) clamp(1.6rem,6vw,5.5rem);text-align:center}
 .band h2{color:#fff;font-size:clamp(2rem,5vw,3.6rem);margin-bottom:1.2rem}
 .band p{color:rgba(255,255,255,.72);max-width:48ch;margin:0 auto 2.2rem;font-size:1rem;line-height:1.8}
 .band .row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;align-items:center}
 .socials{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:2.4rem}
-.soc{display:inline-flex;align-items:center;gap:.5rem;font-size:.58rem;font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;padding:.7rem 1.1rem;border:1px solid var(--line-w);color:#fff;transition:all .25s}
+.soc{display:inline-flex;align-items:center;gap:.5rem;font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.1rem;border:1px solid var(--line-w);color:#fff;transition:all .25s}
 .soc:hover{background:rgba(255,255,255,.1);border-color:#fff}
 .soc svg{width:15px;height:15px;flex-shrink:0}
 
-/* ─── FOOTER ─── */
+/* FOOTER */
 footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5rem) clamp(1.6rem,6vw,5.5rem) 2.5rem}
 .foot-in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem}
 .foot-brand .brand-t{color:#fff;font-size:1.5rem}
 .foot-brand p{margin-top:1rem;font-size:.85rem;line-height:1.8;max-width:34ch}
-.foot-col h4{font-family:var(--san);font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.4);margin-bottom:1.1rem}
+.foot-col h4{font-family:var(--san);font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.1rem}
 .foot-col a,.foot-col span{display:block;font-size:.85rem;color:rgba(255,255,255,.72);padding:.32rem 0;cursor:pointer;transition:color .2s}
 .foot-col a:hover{color:#fff}
-.foot-bot{max-width:1180px;margin:2.8rem auto 0;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.1);
-  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.7rem;color:rgba(255,255,255,.4)}
+.foot-bot{max-width:1180px;margin:2.8rem auto 0;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.7rem;color:rgba(255,255,255,.4)}
 @media(max-width:760px){.foot-in{grid-template-columns:1fr;gap:2rem}}
 
-/* ─── INNER HERO (detail) ─── */
-.ihero{height:56vh;min-height:340px;position:relative;overflow:hidden;display:flex;align-items:flex-end;margin-top:0;color:#fff}
+/* INNER HERO */
+.ihero{height:56vh;min-height:340px;position:relative;overflow:hidden;display:flex;align-items:flex-end;color:#fff}
 .ihero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ihero .ov{position:absolute;inset:0;background:linear-gradient(rgba(22,33,30,.25),rgba(22,33,30,.78))}
-.ihero-c{position:relative;z-index:2;padding:0 clamp(1.6rem,6vw,5.5rem) clamp(2.4rem,5vw,3.6rem);width:100%}
-.ihero h1{font-size:clamp(2.4rem,6vw,4.6rem);color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.ihero .ov{position:absolute;inset:0;background:linear-gradient(rgba(22,33,30,.28),rgba(22,33,30,.78))}
+.ihero-c{position:relative;z-index:2;padding:0 clamp(1.6rem,6vw,5.5rem) clamp(2.4rem,5vw,3.6rem);width:100%;display:flex;flex-direction:column;align-items:flex-start}
+.ihero h1{font-family:var(--ser);font-weight:300;font-size:clamp(2.4rem,6vw,4.6rem);color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3)}
 .ihero .eyebrow{color:#fff}.ihero .eyebrow::before{background:rgba(255,255,255,.7)}
 .ihero.typographic{background:var(--ink)}
-.ihero.typographic::after{content:'';position:absolute;inset:0;
-  background:radial-gradient(120% 90% at 80% 20%,rgba(52,95,85,.35),transparent 60%)}
+.ihero.typographic::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 20%,rgba(52,95,85,.4),transparent 60%)}
 
-/* ─── DETAIL SECTIONS ─── */
+/* DETAIL SECTIONS */
 .sec{padding:clamp(3.5rem,7vw,6rem) clamp(1.6rem,6vw,5.5rem);max-width:1240px;margin:0 auto}
 .sec.stone{background:var(--stone);max-width:none}
 .sec.stone>.inner{max-width:1240px;margin:0 auto}
@@ -206,7 +188,6 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
 @media(max-width:820px){.intro-grid{grid-template-columns:1fr;gap:1.4rem}}
 .intro-grid p+p{margin-top:1.1rem}
 
-/* service grid */
 .svc-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2.5rem}
 .svc{background:var(--paper);padding:2.4rem 2rem;transition:background .3s;min-height:200px}
 .sec.stone .svc{background:var(--stone)}
@@ -220,38 +201,41 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
 @media(max-width:820px){.svc-g{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.svc-g{grid-template-columns:1fr}}
 
-/* room grid */
 .room-hd{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.2rem}
 .room-g{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
 .room-c{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:pointer;background:var(--ink)}
+.room-c.ph{cursor:default;background:linear-gradient(140deg,var(--verd) 0%,var(--ink) 70%)}
 .room-c img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .room-c:hover img{transform:scale(1.05)}
-.room-c .r-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,24,21,.9) 4%,rgba(15,24,21,.35) 45%,rgba(15,24,21,.05) 100%);
-  display:flex;flex-direction:column;justify-content:flex-end;padding:1.7rem}
+.room-c .r-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,24,21,.9) 4%,rgba(15,24,21,.35) 45%,rgba(15,24,21,.05) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.7rem}
+.room-c.ph .r-ov{background:linear-gradient(0deg,rgba(15,24,21,.55),rgba(15,24,21,.05))}
 .room-c .r-loc{font-size:.5rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C9D6CF;margin-bottom:.4rem}
 .room-c .r-nm{font-family:var(--ser);font-size:1.75rem;font-weight:400;color:#fff;line-height:1.05}
 .room-c .r-ds{font-size:.78rem;color:rgba(255,255,255,.78);margin-top:.35rem}
-.room-c .r-go{font-size:.55rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--verd-2);
-  margin-top:.9rem;opacity:0;transform:translateY(6px);transition:all .3s}
+.room-c .r-go{font-size:.55rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--verd-2);margin-top:.9rem;opacity:0;transform:translateY(6px);transition:all .3s}
 .room-c:hover .r-go{opacity:1;transform:none}
-.room-c .r-tag{position:absolute;top:1rem;left:1rem;background:var(--verd);color:#fff;font-size:.5rem;font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;padding:.4rem .7rem;z-index:2}
+.room-c .r-tag{position:absolute;top:1rem;left:1rem;background:var(--verd);color:#fff;font-size:.5rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.4rem .7rem;z-index:2}
 .room-c .r-tag.soon{background:var(--clay)}
 @media(max-width:620px){.room-g{grid-template-columns:1fr}}
 
-/* mini gallery strip */
 .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px;margin-top:2.2rem}
 .strip .g{aspect-ratio:4/3;overflow:hidden;cursor:pointer;background:var(--ink)}
 .strip .g img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .strip .g:hover img{transform:scale(1.05)}
 
-/* bottom CTA */
+/* PRESS */
+.press{border:1px solid var(--line);background:var(--paper);padding:clamp(1.8rem,4vw,2.6rem);margin-top:2.5rem;display:flex;flex-direction:column;gap:.7rem;transition:border-color .3s}
+.press:hover{border-color:var(--verd)}
+.press .src{font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--verd)}
+.press h3{font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.2}
+.press p{font-size:.92rem;color:var(--muted);line-height:1.8;max-width:64ch}
+.press .link-u{margin-top:.5rem}
+
 .backcta{background:var(--ink);color:#fff;text-align:center;padding:clamp(3.5rem,7vw,6rem) 1.6rem}
 .backcta .eyebrow{justify-content:center;color:#C9D6CF}.backcta .eyebrow::before{display:none}
 .backcta h2{color:#fff;font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:1.8rem}
 .backcta .row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
-/* contact cards */
 .cc-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2.5rem}
 .cc{background:var(--paper);padding:2.6rem 2rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem}
 .cc .ic{width:44px;height:44px;margin-bottom:.6rem}
@@ -264,37 +248,30 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
 .cc-links a:hover{color:var(--verd);border-color:var(--verd)}
 @media(max-width:820px){.cc-g{grid-template-columns:1fr}}
 
-/* ─── LIGHTBOX ─── */
+/* LIGHTBOX */
 .lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(15,24,21,.96);align-items:center;justify-content:center}
 .lb.on{display:flex}
 .lb img{max-width:92vw;max-height:86vh;object-fit:contain}
 .lb-x{position:fixed;top:1.3rem;right:1.8rem;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none;line-height:1;opacity:.75}
 .lb-x:hover{opacity:1}
-.lb-a{position:fixed;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.65);font-size:2.6rem;cursor:pointer;
-  background:none;border:none;padding:0 1.4rem;z-index:1001}
+.lb-a{position:fixed;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.65);font-size:2.6rem;cursor:pointer;background:none;border:none;padding:0 1.4rem;z-index:1001}
 .lb-a:hover{color:#fff}.lb-p{left:0}.lb-n{right:0}
 .lb-c{position:fixed;bottom:1.1rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.4);font-size:.65rem;letter-spacing:.15em}
 
-/* ─── WHATSAPP FLOAT ─── */
-#wa{position:fixed;bottom:22px;right:22px;z-index:400;width:56px;height:56px;border-radius:50%;
-  box-shadow:0 6px 22px rgba(0,0,0,.28);transition:transform .25s}
+/* WHATSAPP FLOAT */
+#wa{position:fixed;bottom:22px;right:22px;z-index:400;width:56px;height:56px;border-radius:50%;box-shadow:0 6px 22px rgba(0,0,0,.28);transition:transform .25s}
 #wa:hover{transform:scale(1.08)}
 #wa svg{width:100%;height:100%}
 @media(max-width:560px){#wa{width:52px;height:52px;bottom:16px;right:16px}}
 
-/* reveal */
 .rev{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
 .rev.in{opacity:1;transform:none}
-
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  .rev{opacity:1;transform:none}
-}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<!-- ═══════════ NAV ═══════════ -->
+<!-- NAV -->
 <nav id="nav">
   <div class="nav-l">
     <button class="hb" onclick="tmm()" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -305,14 +282,10 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
   </div>
   <div class="nav-r">
     <button id="lang-btn" onclick="toggleLang()">EN</button>
-    <a class="nav-wa" href="https://wa.me/393932626399" target="_blank" rel="noopener">
-      <svg width="13" height="13" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.3.6 4.4 1.7 6.3L4 29l7.9-1.7c1.8 1 3.9 1.5 6.1 1.5 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 22c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.1.9.9-4-.3-.4C5.5 18.7 5 16.9 5 15 5 9 9.5 4.5 16 4.5S27 9 27 15 22.5 25 16 25z"/></svg>
-      <span data-it="WhatsApp" data-en="WhatsApp">WhatsApp</span>
-    </a>
   </div>
 </nav>
 
-<!-- ═══════════ MENU ═══════════ -->
+<!-- MENU -->
 <div class="mo" id="mo" onclick="tmm()"></div>
 <aside class="mm" id="mm">
   <div class="mm-hd">
@@ -320,9 +293,10 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
     <button class="mm-x" onclick="tmm()" aria-label="Chiudi">×</button>
   </div>
   <a onclick="mn('home')"><span data-it="Home" data-en="Home">Home</span></a>
-  <a onclick="mn('mds')"><span data-it="MDS Properties" data-en="MDS Properties">MDS Properties</span><small data-it="il gruppo" data-en="the group">il gruppo</small></a>
+  <a onclick="mn('mds')"><span>MDS Properties</span><small data-it="il gruppo" data-en="the group">il gruppo</small></a>
   <a onclick="mn('roma')"><span>Le Stanze di Roma</span><small>Roma</small></a>
   <a onclick="mn('sharm')"><span>Le Stanze di Sharm</span><small>Sharm</small></a>
+  <a onclick="mn('dicono')"><span data-it="Dicono di noi" data-en="Press">Dicono di noi</span></a>
   <a onclick="mn('contatti')"><span data-it="Contatti" data-en="Contact">Contatti</span></a>
   <div class="mm-cta" onclick="window.open('https://wa.me/393932626399','_blank')" data-it="Scrivici su WhatsApp" data-en="Message us on WhatsApp">Scrivici su WhatsApp</div>
   <div class="mm-info">
@@ -331,56 +305,102 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
   </div>
 </aside>
 
-<!-- ═══════════════════════════════ HOME ═══════════════════════════════ -->
+<!-- ═══════════ HOME ═══════════ -->
 <div id="page-home" class="page on">
   <section class="hero">
-    <div class="hero-bg" style="background-image:url('https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_026.jpeg?updatedAt=1774875897112')"></div>
+    <svg class="hero-art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#15211D"/><stop offset="0.55" stop-color="#16211E"/><stop offset="1" stop-color="#0D1512"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="0.52" cy="0.63" r="0.55">
+          <stop offset="0" stop-color="#3B6A60" stop-opacity="0.5"/><stop offset="1" stop-color="#3B6A60" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#F1DBB6"/><stop offset="0.42" stop-color="#D69B67"/><stop offset="1" stop-color="#B4674B" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="refl" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#E9C79C" stop-opacity="0.45"/><stop offset="1" stop-color="#E9C79C" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="1600" height="900" fill="url(#sky)"/>
+      <rect width="1600" height="900" fill="url(#glow)"/>
+      <g fill="#EDE6D6">
+        <circle cx="180" cy="120" r="1.6" opacity=".7"/><circle cx="320" cy="200" r="1.1" opacity=".5"/>
+        <circle cx="470" cy="90" r="1.3" opacity=".6"/><circle cx="620" cy="170" r="1" opacity=".45"/>
+        <circle cx="780" cy="110" r="1.5" opacity=".65"/><circle cx="1010" cy="150" r="1.1" opacity=".5"/>
+        <circle cx="1180" cy="90" r="1.4" opacity=".6"/><circle cx="1320" cy="180" r="1" opacity=".45"/>
+        <circle cx="1450" cy="120" r="1.6" opacity=".7"/><circle cx="240" cy="300" r="1" opacity=".4"/>
+        <circle cx="1390" cy="300" r="1.2" opacity=".5"/><circle cx="560" cy="250" r="1" opacity=".4"/>
+        <circle cx="900" cy="210" r="1.1" opacity=".5"/><circle cx="1120" cy="250" r="1" opacity=".4"/>
+      </g>
+      <circle cx="900" cy="566" r="138" fill="url(#sun)"/>
+      <line x1="0" y1="566" x2="1600" y2="566" stroke="#C9B79A" stroke-opacity="0.28" stroke-width="1"/>
+      <rect x="864" y="566" width="72" height="330" fill="url(#refl)"/>
+      <g stroke="#7FA79B" stroke-opacity="0.15" stroke-width="1">
+        <line x1="0" y1="590" x2="1600" y2="590"/><line x1="0" y1="618" x2="1600" y2="618"/>
+        <line x1="0" y1="650" x2="1600" y2="650"/><line x1="0" y1="688" x2="1600" y2="688"/>
+        <line x1="0" y1="732" x2="1600" y2="732"/><line x1="0" y1="784" x2="1600" y2="784"/>
+        <line x1="0" y1="842" x2="1600" y2="842"/>
+      </g>
+      <!-- Roman aqueduct arches (left) -->
+      <g stroke="#CBB894" stroke-opacity="0.55" stroke-width="2.2" fill="none" stroke-linecap="round">
+        <line x1="130" y1="566" x2="130" y2="474"/><line x1="210" y1="566" x2="210" y2="474"/>
+        <line x1="290" y1="566" x2="290" y2="474"/><line x1="370" y1="566" x2="370" y2="474"/>
+        <line x1="450" y1="566" x2="450" y2="474"/><line x1="530" y1="566" x2="530" y2="474"/>
+        <path d="M130 474 A40 40 0 0 1 210 474"/><path d="M210 474 A40 40 0 0 1 290 474"/>
+        <path d="M290 474 A40 40 0 0 1 370 474"/><path d="M370 474 A40 40 0 0 1 450 474"/>
+        <path d="M450 474 A40 40 0 0 1 530 474"/>
+        <line x1="120" y1="466" x2="540" y2="466" stroke-opacity="0.4"/>
+      </g>
+      <!-- Red Sea sailboat (right) -->
+      <g stroke="#CBB894" stroke-opacity="0.6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1258 566 Q1300 590 1344 566"/>
+        <line x1="1301" y1="470" x2="1301" y2="560"/>
+        <path d="M1301 476 L1301 556 L1346 556 Z" fill="#CBB894" fill-opacity="0.12"/>
+        <path d="M1301 486 L1301 552 L1266 552 Z" fill="#CBB894" fill-opacity="0.08"/>
+      </g>
+    </svg>
     <div class="hero-ov"></div>
     <div class="hero-frame"></div>
     <div class="hero-tick" data-it="· Roma · Mar Rosso ·" data-en="· Rome · Red Sea ·">· Roma · Mar Rosso ·</div>
     <div class="hero-c">
       <div class="eyebrow" data-it="Collezione di ospitalità" data-en="A hospitality collection">Collezione di ospitalità</div>
       <h1>Le Stanze</h1>
-      <p class="hero-sub" data-it="Camere e appartamenti curati, tra Roma e il Mar Rosso. Un&#39;unica cura, tre indirizzi." data-en="Curated rooms and apartments, between Rome and the Red Sea. One care, three addresses.">Camere e appartamenti curati, tra Roma e il Mar Rosso. Un'unica cura, tre indirizzi.</p>
+      <p class="hero-sub" data-it="Camere e appartamenti curati, tra Roma e il Mar Rosso. Un'unica cura, tre indirizzi." data-en="Curated rooms and apartments, between Rome and the Red Sea. One care, three addresses.">Camere e appartamenti curati, tra Roma e il Mar Rosso. Un'unica cura, tre indirizzi.</p>
       <div class="hero-btns">
         <div class="btn btn-verd" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})" data-it="Scopri le strutture" data-en="Explore the properties">Scopri le strutture</div>
-        <a class="btn btn-ghost" href="https://wa.me/393932626399" target="_blank" rel="noopener" data-it="Contattaci" data-en="Get in touch">Contattaci</a>
+        <div class="btn btn-ghost" onclick="sp('dicono')" data-it="Dicono di noi" data-en="Press">Dicono di noi</div>
       </div>
     </div>
   </section>
 
-  <!-- MANIFESTO -->
   <section class="manifesto">
     <div class="manifesto-in">
       <div class="rev">
         <div class="eyebrow" data-it="Il gruppo" data-en="The group">Il gruppo</div>
-        <h2 class="h2" data-it="Un&#39;ospitalità <em>autentica</em>, curata nei dettagli" data-en="Authentic <em>hospitality</em>, curated in every detail">Un'ospitalità <em>autentica</em>, curata nei dettagli</h2>
+        <h2 class="h2" data-it="Un'ospitalità <em>autentica</em>, curata nei dettagli" data-en="Authentic <em>hospitality</em>, curated in every detail">Un'ospitalità <em>autentica</em>, curata nei dettagli</h2>
       </div>
       <div class="rev">
         <p class="lead" data-it="Le Stanze riunisce i progetti di ospitalità di Massimiliano De Santis: camere e appartamenti per soggiorni brevi e lunghi, dal cuore di Roma alle rive del Mar Rosso." data-en="Le Stanze brings together the hospitality projects of Massimiliano De Santis: rooms and apartments for short and long stays, from the heart of Rome to the shores of the Red Sea.">Le Stanze riunisce i progetti di ospitalità di Massimiliano De Santis: camere e appartamenti per soggiorni brevi e lunghi, dal cuore di Roma alle rive del Mar Rosso.</p>
-        <p class="body-t" data-it="Ogni struttura è seguita di persona, con assistenza completa in italiano e la stessa attenzione alla qualità: dalla scelta dei materiali all&#39;accoglienza degli ospiti, arrivo dopo arrivo." data-en="Every property is managed personally, with full Italian-speaking assistance and the same attention to quality: from the choice of materials to welcoming guests, stay after stay.">Ogni struttura è seguita di persona, con assistenza completa in italiano e la stessa attenzione alla qualità: dalla scelta dei materiali all'accoglienza degli ospiti, arrivo dopo arrivo.</p>
+        <p class="body-t" data-it="Un progetto costruito sui valori della famiglia e delle radici: ogni struttura è seguita di persona, senza intermediari, con assistenza in italiano prima, durante e dopo il soggiorno." data-en="A project built on the values of family and roots: every property is managed personally, without intermediaries, with Italian-speaking assistance before, during and after the stay.">Un progetto costruito sui valori della famiglia e delle radici: ogni struttura è seguita di persona, senza intermediari, con assistenza in italiano prima, durante e dopo il soggiorno.</p>
         <div class="sig" data-it="&ldquo;La stessa cura, ovunque tu soggiorni.&rdquo;<small>MDS Properties &amp; Consulting · Massimiliano De Santis</small>" data-en="&ldquo;The same care, wherever you stay.&rdquo;<small>MDS Properties &amp; Consulting · Massimiliano De Santis</small>">&ldquo;La stessa cura, ovunque tu soggiorni.&rdquo;<small>MDS Properties &amp; Consulting · Massimiliano De Santis</small></div>
       </div>
     </div>
   </section>
 
-  <!-- COLLECTION -->
   <div id="collection" class="coll-hd rev">
     <div class="eyebrow c" data-it="La collezione" data-en="The collection">La collezione</div>
-    <h2 class="h2" data-it="Tre indirizzi, <em>un&#39;unica firma</em>" data-en="Three addresses, <em>one signature</em>">Tre indirizzi, <em>un'unica firma</em></h2>
+    <h2 class="h2" data-it="Tre indirizzi, <em>un'unica firma</em>" data-en="Three addresses, <em>one signature</em>">Tre indirizzi, <em>un'unica firma</em></h2>
   </div>
 
-  <!-- I · MDS PROPERTIES -->
   <section class="struct">
-    <div class="struct-img" onclick="sp('mds')">
-      <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_017.jpeg?updatedAt=1774875897046" alt="MDS Properties">
-      <div class="veil"></div>
-    </div>
+    <div class="struct-img" onclick="sp('mds')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_017.jpeg?updatedAt=1774875897046" alt="MDS Properties"><div class="veil"></div></div>
     <div class="struct-txt rev">
       <div class="plaque"><span>N.</span><b>I</b></div>
       <div class="eyebrow" data-it="Il gruppo · Property management" data-en="The group · Property management">Il gruppo · Property management</div>
       <h2>MDS Properties</h2>
-      <p class="body-t" data-it="Il progetto che riunisce tutto: gestione di camere e appartamenti per affitti brevi tra Roma e Sharm el Sheikh, assistenza agli ospiti e ai proprietari, promozione e collaborazioni." data-en="The project that brings it all together: management of rooms and apartments for short-term rentals between Rome and Sharm el Sheikh, assistance for guests and owners, promotion and partnerships.">Il progetto che riunisce tutto: gestione di camere e appartamenti per affitti brevi tra Roma e Sharm el Sheikh, assistenza agli ospiti e ai proprietari, promozione e collaborazioni.</p>
+      <p class="body-t" data-it="Il progetto che riunisce tutto: gestione di camere e appartamenti per affitti brevi tra Roma e Sharm el Sheikh, assistenza agli ospiti e ai proprietari, promozione e investimenti immobiliari." data-en="The project that brings it all together: management of rooms and apartments for short-term rentals between Rome and Sharm el Sheikh, assistance for guests and owners, promotion and real-estate investment.">Il progetto che riunisce tutto: gestione di camere e appartamenti per affitti brevi tra Roma e Sharm el Sheikh, assistenza agli ospiti e ai proprietari, promozione e investimenti immobiliari.</p>
       <div class="struct-cta">
         <div class="btn btn-line" onclick="sp('mds')" data-it="Scopri" data-en="Discover">Scopri</div>
         <a class="link-u" href="https://mdsproperties.it/" target="_blank" rel="noopener"><span data-it="Visita il sito" data-en="Visit the site">Visita il sito</span> <span class="ar">↗</span></a>
@@ -388,17 +408,13 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
     </div>
   </section>
 
-  <!-- II · LE STANZE DI ROMA -->
-  <section class="struct rev">
-    <div class="struct-img" onclick="sp('roma')">
-      <img src="https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260421-WA0006.jpg?updatedAt=1776802156165" alt="Le Stanze di Roma">
-      <div class="veil"></div>
-    </div>
-    <div class="struct-txt">
+  <section class="struct rv">
+    <div class="struct-img" onclick="sp('roma')"><img src="https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260421-WA0006.jpg?updatedAt=1776802156165" alt="Le Stanze di Roma"><div class="veil"></div></div>
+    <div class="struct-txt rev">
       <div class="plaque"><span>N.</span><b>II</b></div>
       <div class="eyebrow" data-it="Roma · Prati / Vaticano" data-en="Rome · Prati / Vatican">Roma · Prati / Vaticano</div>
       <h2>Le Stanze di <em>Roma</em></h2>
-      <p class="body-t" data-it="Appartamenti e camere nel cuore di Roma, a pochi passi dal Vaticano. Check-in digitale, servizi su misura e la Città Eterna fuori dalla porta." data-en="Apartments and rooms in the heart of Rome, a short walk from the Vatican. Digital check-in, tailored services and the Eternal City on your doorstep.">Appartamenti e camere nel cuore di Roma, a pochi passi dal Vaticano. Check-in digitale, servizi su misura e la Città Eterna fuori dalla porta.</p>
+      <p class="body-t" data-it="Tre indirizzi nel cuore di Roma, a pochi passi dal Vaticano. Check-in digitale, servizi su misura e la Città Eterna fuori dalla porta." data-en="Three addresses in the heart of Rome, a short walk from the Vatican. Digital check-in, tailored services and the Eternal City on your doorstep.">Tre indirizzi nel cuore di Roma, a pochi passi dal Vaticano. Check-in digitale, servizi su misura e la Città Eterna fuori dalla porta.</p>
       <div class="struct-cta">
         <div class="btn btn-line" onclick="sp('roma')" data-it="Scopri" data-en="Discover">Scopri</div>
         <a class="link-u" href="https://lestanzediroma.it/" target="_blank" rel="noopener"><span data-it="Visita il sito" data-en="Visit the site">Visita il sito</span> <span class="ar">↗</span></a>
@@ -406,17 +422,13 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
     </div>
   </section>
 
-  <!-- III · LE STANZE DI SHARM -->
   <section class="struct">
-    <div class="struct-img" onclick="sp('sharm')">
-      <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_002.jpeg" alt="Le Stanze di Sharm">
-      <div class="veil"></div>
-    </div>
+    <div class="struct-img" onclick="sp('sharm')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_002.jpeg" alt="Le Stanze di Sharm"><div class="veil"></div></div>
     <div class="struct-txt rev">
       <div class="plaque"><span>N.</span><b>III</b></div>
       <div class="eyebrow" data-it="Sharm el Sheikh · Coral Bay" data-en="Sharm el Sheikh · Coral Bay">Sharm el Sheikh · Coral Bay</div>
       <h2>Le Stanze di <em>Sharm</em></h2>
-      <p class="body-t" data-it="Camere e appartamenti nel cuore del Mar Rosso, all&#39;interno del Coral Bay. Assistenza italiana, transfer ed escursioni, a due passi dalla spiaggia." data-en="Rooms and apartments in the heart of the Red Sea, inside Coral Bay. Italian-speaking assistance, transfers and excursions, steps from the beach.">Camere e appartamenti nel cuore del Mar Rosso, all'interno del Coral Bay. Assistenza italiana, transfer ed escursioni, a due passi dalla spiaggia.</p>
+      <p class="body-t" data-it="Camere e appartamenti nel cuore del Mar Rosso, all'interno del Domina Coral Bay. Assistenza italiana, transfer ed escursioni, a due passi dalla spiaggia." data-en="Rooms and apartments in the heart of the Red Sea, inside Domina Coral Bay. Italian-speaking assistance, transfers and excursions, steps from the beach.">Camere e appartamenti nel cuore del Mar Rosso, all'interno del Domina Coral Bay. Assistenza italiana, transfer ed escursioni, a due passi dalla spiaggia.</p>
       <div class="struct-cta">
         <div class="btn btn-line" onclick="sp('sharm')" data-it="Scopri" data-en="Discover">Scopri</div>
         <a class="link-u" href="https://lestanzedisharm.com/" target="_blank" rel="noopener"><span data-it="Visita il sito" data-en="Visit the site">Visita il sito</span> <span class="ar">↗</span></a>
@@ -424,7 +436,6 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
     </div>
   </section>
 
-  <!-- CONTACT BAND -->
   <section class="band">
     <div class="rev">
       <div class="eyebrow c on-dark no-rule" data-it="Contatti" data-en="Contact">Contatti</div>
@@ -441,7 +452,6 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="foot-in">
       <div class="foot-brand">
@@ -455,10 +465,10 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
         <a href="https://lestanzedisharm.com/" target="_blank" rel="noopener">Le Stanze di Sharm ↗</a>
       </div>
       <div class="foot-col">
-        <h4 data-it="Contatti" data-en="Contact">Contatti</h4>
+        <h4 data-it="Scopri" data-en="Explore">Scopri</h4>
+        <a onclick="sp('dicono')" data-it="Dicono di noi" data-en="Press">Dicono di noi</a>
+        <a onclick="sp('contatti')" data-it="Contatti" data-en="Contact">Contatti</a>
         <a href="https://wa.me/393932626399" target="_blank" rel="noopener">WhatsApp · +39 393 262 6399</a>
-        <a href="https://www.instagram.com/le_stanzediroma" target="_blank" rel="noopener">Instagram · Roma</a>
-        <a href="https://www.instagram.com/lestanzedisharm" target="_blank" rel="noopener">Instagram · Sharm</a>
       </div>
     </div>
     <div class="foot-bot">
@@ -468,92 +478,94 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
   </footer>
 </div>
 
-<!-- ═══════════════════════════════ MDS PROPERTIES ═══════════════════════════════ -->
+<!-- ═══════════ MDS PROPERTIES ═══════════ -->
 <div id="page-mds" class="page">
   <section class="ihero">
     <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_019.jpeg?updatedAt=1774875897041" alt="MDS Properties">
     <div class="ov"></div>
     <div class="ihero-c">
+      <div class="back" onclick="goBack()">← <span data-it="Indietro" data-en="Back">Indietro</span></div>
       <div class="eyebrow" data-it="Il gruppo" data-en="The group">Il gruppo</div>
       <h1>MDS <em>Properties</em></h1>
     </div>
   </section>
-
   <section class="sec">
     <div class="intro-grid">
-      <div class="rev"><div class="eyebrow" data-it="Chi siamo" data-en="About us">Chi siamo</div>
-        <div class="plaque"><span>N.</span><b>I</b></div>
-      </div>
+      <div class="rev"><div class="eyebrow" data-it="Chi siamo" data-en="About us">Chi siamo</div><div class="plaque"><span>N.</span><b>I</b></div></div>
       <div class="rev">
-        <p class="lead" data-it="MDS Properties è il progetto di ospitalità di Massimiliano De Santis: la regia che unisce Le Stanze di Roma e Le Stanze di Sharm." data-en="MDS Properties is the hospitality project of Massimiliano De Santis: the direction that brings together Le Stanze di Roma and Le Stanze di Sharm.">MDS Properties è il progetto di ospitalità di Massimiliano De Santis: la regia che unisce Le Stanze di Roma e Le Stanze di Sharm.</p>
-        <p class="body-t" data-it="Gestiamo camere e appartamenti per affitti brevi seguendo ogni ospite dall&#39;arrivo alla partenza, con la stessa cura in Italia e sul Mar Rosso." data-en="We manage rooms and apartments for short-term rentals, looking after every guest from arrival to departure, with the same care in Italy and on the Red Sea.">Gestiamo camere e appartamenti per affitti brevi seguendo ogni ospite dall'arrivo alla partenza, con la stessa cura in Italia e sul Mar Rosso.</p>
+        <p class="lead" data-it="MDS Properties è la società che coordina e sviluppa i progetti Le Stanze di Roma e Le Stanze di Sharm: la regia che unisce ospitalità e investimenti immobiliari tra Italia ed Egitto." data-en="MDS Properties is the company that coordinates and develops the Le Stanze di Roma and Le Stanze di Sharm projects: the direction bringing together hospitality and real-estate investment between Italy and Egypt.">MDS Properties è la società che coordina e sviluppa i progetti Le Stanze di Roma e Le Stanze di Sharm: la regia che unisce ospitalità e investimenti immobiliari tra Italia ed Egitto.</p>
+        <p class="body-t" data-it="Gestiamo camere e appartamenti per affitti brevi seguendo ogni ospite dall'arrivo alla partenza, con la stessa cura in Italia e sul Mar Rosso." data-en="We manage rooms and apartments for short-term rentals, looking after every guest from arrival to departure, with the same care in Italy and on the Red Sea.">Gestiamo camere e appartamenti per affitti brevi seguendo ogni ospite dall'arrivo alla partenza, con la stessa cura in Italia e sul Mar Rosso.</p>
       </div>
     </div>
   </section>
-
   <section class="sec stone"><div class="inner">
     <div class="eyebrow rev" data-it="Cosa facciamo" data-en="What we do">Cosa facciamo</div>
-    <h2 class="h2 rev" data-it="Ospitalità, dalla A alla <em>Z</em>" data-en="Hospitality, from A to <em>Z</em>">Ospitalità, dalla A alla <em>Z</em></h2>
+    <h2 class="h2 rev" data-it="Ospitalità &amp; <em>investimenti</em>" data-en="Hospitality &amp; <em>investment</em>">Ospitalità &amp; <em>investimenti</em></h2>
     <div class="svc-g rev">
       <div class="svc"><div class="n">01</div><h3 data-it="Ospitalità turistica" data-en="Tourist hospitality">Ospitalità turistica</h3><p data-it="Camere e appartamenti selezionati per soggiorni brevi e lunghi tra Roma e Sharm." data-en="Selected rooms and apartments for short and long stays between Rome and Sharm.">Camere e appartamenti selezionati per soggiorni brevi e lunghi tra Roma e Sharm.</p></div>
-      <div class="svc"><div class="n">02</div><h3 data-it="Affitti brevi" data-en="Short-term rentals">Affitti brevi</h3><p data-it="Gestione completa delle prenotazioni sui principali canali, con calendari sempre aggiornati." data-en="Full booking management across the main channels, with always up-to-date calendars.">Gestione completa delle prenotazioni sui principali canali, con calendari sempre aggiornati.</p></div>
+      <div class="svc"><div class="n">02</div><h3 data-it="Affitti brevi" data-en="Short-term rentals">Affitti brevi</h3><p data-it="Gestione diretta delle prenotazioni, senza intermediari, con il miglior prezzo disponibile." data-en="Direct booking management, without intermediaries, with the best available price.">Gestione diretta delle prenotazioni, senza intermediari, con il miglior prezzo disponibile.</p></div>
       <div class="svc"><div class="n">03</div><h3 data-it="Gestione immobili" data-en="Property management">Gestione immobili</h3><p data-it="Ci occupiamo di tutto: pulizie, manutenzione, check-in e assistenza, tu incassi." data-en="We take care of everything: cleaning, maintenance, check-in and assistance — you collect the income.">Ci occupiamo di tutto: pulizie, manutenzione, check-in e assistenza, tu incassi.</p></div>
-      <div class="svc"><div class="n">04</div><h3 data-it="Assistenza ospiti" data-en="Guest assistance">Assistenza ospiti</h3><p data-it="Supporto in italiano prima e durante il soggiorno, per un&#39;esperienza senza pensieri." data-en="Italian-speaking support before and during the stay, for a worry-free experience.">Supporto in italiano prima e durante il soggiorno, per un'esperienza senza pensieri.</p></div>
-      <div class="svc"><div class="n">05</div><h3 data-it="Promozione" data-en="Promotion">Promozione</h3><p data-it="Valorizziamo ogni struttura con foto, contenuti e presenza sui canali giusti." data-en="We showcase each property with photography, content and presence on the right channels.">Valorizziamo ogni struttura con foto, contenuti e presenza sui canali giusti.</p></div>
+      <div class="svc"><div class="n">04</div><h3 data-it="Assistenza ospiti" data-en="Guest assistance">Assistenza ospiti</h3><p data-it="Un riferimento in italiano prima, durante e dopo il soggiorno." data-en="An Italian-speaking contact before, during and after the stay.">Un riferimento in italiano prima, durante e dopo il soggiorno.</p></div>
+      <div class="svc"><div class="n">05</div><h3 data-it="Investimenti immobiliari" data-en="Real-estate investment">Investimenti immobiliari</h3><p data-it="Affianchiamo investitori e privati nella ricerca di immobili in Italia e in Egitto." data-en="We support investors and individuals in finding property in Italy and Egypt.">Affianchiamo investitori e privati nella ricerca di immobili in Italia e in Egitto.</p></div>
       <div class="svc"><div class="n">06</div><h3 data-it="Collaborazioni" data-en="Partnerships">Collaborazioni</h3><p data-it="Aperti a proprietari e professionisti del turismo che vogliono crescere con noi." data-en="Open to owners and tourism professionals who want to grow with us.">Aperti a proprietari e professionisti del turismo che vogliono crescere con noi.</p></div>
     </div>
   </div></section>
-
   <section class="sec">
     <div class="intro-grid">
       <div class="rev"><div class="eyebrow" data-it="Collabora con noi" data-en="Work with us">Collabora con noi</div>
-        <h2 class="h2" data-it="Hai un immobile?<br><em>Facciamolo rendere</em>" data-en="Own a property?<br><em>Let&#39;s make it work</em>">Hai un immobile?<br><em>Facciamolo rendere</em></h2>
-      </div>
+        <h2 class="h2" data-it="Hai un immobile?<br><em>Facciamolo rendere</em>" data-en="Own a property?<br><em>Let's make it work</em>">Hai un immobile?<br><em>Facciamolo rendere</em></h2></div>
       <div class="rev">
-        <p class="body-t" data-it="Se possiedi un appartamento a Roma o a Sharm el Sheikh che non rende a pieno potenziale, possiamo gestirlo per te: prenotazioni, ospiti, pulizie e manutenzione. Tu ricevi le entrate e un report chiaro, senza pensieri." data-en="If you own an apartment in Rome or Sharm el Sheikh that isn&#39;t reaching its full potential, we can manage it for you: bookings, guests, cleaning and maintenance. You receive the income and a clear report, hassle-free.">Se possiedi un appartamento a Roma o a Sharm el Sheikh che non rende a pieno potenziale, possiamo gestirlo per te: prenotazioni, ospiti, pulizie e manutenzione. Tu ricevi le entrate e un report chiaro, senza pensieri.</p>
-        <div style="margin-top:1.6rem"><a class="btn btn-verd" href="https://wa.me/393932626399" target="_blank" rel="noopener" data-it="Parliamone su WhatsApp" data-en="Let&#39;s talk on WhatsApp">Parliamone su WhatsApp</a></div>
+        <p class="body-t" data-it="Se possiedi un appartamento a Roma o a Sharm el Sheikh che non rende a pieno potenziale, possiamo gestirlo per te: prenotazioni, ospiti, pulizie e manutenzione. Tu ricevi le entrate e un report chiaro, senza pensieri." data-en="If you own an apartment in Rome or Sharm el Sheikh that isn't reaching its full potential, we can manage it for you: bookings, guests, cleaning and maintenance. You receive the income and a clear report, hassle-free.">Se possiedi un appartamento a Roma o a Sharm el Sheikh che non rende a pieno potenziale, possiamo gestirlo per te: prenotazioni, ospiti, pulizie e manutenzione. Tu ricevi le entrate e un report chiaro, senza pensieri.</p>
+        <div style="margin-top:1.6rem"><a class="btn btn-verd" href="https://wa.me/393932626399" target="_blank" rel="noopener" data-it="Parliamone su WhatsApp" data-en="Let's talk on WhatsApp">Parliamone su WhatsApp</a></div>
       </div>
     </div>
   </section>
-
   <section class="backcta">
     <div class="eyebrow no-rule" data-it="Sito ufficiale" data-en="Official site">Sito ufficiale</div>
     <h2 data-it="Scopri tutto su <em>MDS Properties</em>" data-en="Discover more on <em>MDS Properties</em>">Scopri tutto su <em>MDS Properties</em></h2>
     <div class="row">
       <a class="btn btn-verd" href="https://mdsproperties.it/" target="_blank" rel="noopener"><span data-it="Vai al sito principale" data-en="Go to the main site">Vai al sito principale</span> <span class="ar">↗</span></a>
-      <div class="btn btn-ghost" onclick="sp('home')" data-it="Torna alla home" data-en="Back to home">Torna alla home</div>
+      <div class="btn btn-ghost" onclick="goBack()" data-it="Torna indietro" data-en="Go back">Torna indietro</div>
     </div>
   </section>
 </div>
 
-<!-- ═══════════════════════════════ LE STANZE DI ROMA ═══════════════════════════════ -->
+<!-- ═══════════ LE STANZE DI ROMA ═══════════ -->
 <div id="page-roma" class="page">
   <section class="ihero">
     <img src="https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260421-WA0006.jpg?updatedAt=1776802156165" alt="Le Stanze di Roma">
     <div class="ov"></div>
     <div class="ihero-c">
+      <div class="back" onclick="goBack()">← <span data-it="Indietro" data-en="Back">Indietro</span></div>
       <div class="eyebrow" data-it="Roma · Prati / Vaticano" data-en="Rome · Prati / Vatican">Roma · Prati / Vaticano</div>
       <h1>Le Stanze di <em>Roma</em></h1>
     </div>
   </section>
-
   <section class="sec">
     <div class="intro-grid">
-      <div class="rev"><div class="eyebrow" data-it="La struttura" data-en="The property">La struttura</div>
-        <div class="plaque"><span>N.</span><b>II</b></div>
-      </div>
+      <div class="rev"><div class="eyebrow" data-it="La struttura" data-en="The property">La struttura</div><div class="plaque"><span>N.</span><b>II</b></div></div>
       <div class="rev">
-        <p class="lead" data-it="Appartamenti e camere in Via Ottaviano 25, nel cuore del quartiere Prati: a pochi minuti a piedi dai Musei Vaticani e dalla Basilica di San Pietro, con la metro a due passi." data-en="Apartments and rooms in Via Ottaviano 25, in the heart of the Prati district: a few minutes&#39; walk from the Vatican Museums and St Peter&#39;s Basilica, with the metro nearby.">Appartamenti e camere in Via Ottaviano 25, nel cuore del quartiere Prati: a pochi minuti a piedi dai Musei Vaticani e dalla Basilica di San Pietro, con la metro a due passi.</p>
+        <p class="lead" data-it="A Roma siamo presenti in tre zone strategiche: Via Ottaviano — a pochi passi dal Vaticano — Via Gregorio VII e Via Angelo Emo. Posizioni ideali sia per i turisti sia per chi viaggia per lavoro." data-en="In Rome we have three strategic locations: Via Ottaviano — steps from the Vatican — Via Gregorio VII and Via Angelo Emo. Ideal both for tourists and business travellers.">A Roma siamo presenti in tre zone strategiche: Via Ottaviano — a pochi passi dal Vaticano — Via Gregorio VII e Via Angelo Emo. Posizioni ideali sia per i turisti sia per chi viaggia per lavoro.</p>
         <p class="body-t" data-it="Spazi curati e check-in digitale per entrare quando vuoi, più una serie di servizi su misura per vivere Roma senza pensieri." data-en="Well-kept spaces and digital check-in so you can arrive whenever you like, plus a range of tailored services to enjoy Rome with ease.">Spazi curati e check-in digitale per entrare quando vuoi, più una serie di servizi su misura per vivere Roma senza pensieri.</p>
       </div>
     </div>
   </section>
-
   <section class="sec stone"><div class="inner">
+    <div class="room-hd">
+      <div class="rev"><div class="eyebrow" data-it="Le stanze" data-en="The rooms">Le stanze</div><h2 class="h2" data-it="Roma · <em>tre indirizzi</em>" data-en="Rome · <em>three addresses</em>">Roma · <em>tre indirizzi</em></h2></div>
+    </div>
+    <div class="room-g rev">
+      <div class="room-c ph"><div class="r-tag soon" data-it="Foto in arrivo" data-en="Photos coming">Foto in arrivo</div><div class="r-ov"><div class="r-loc">Prati · Vaticano</div><div class="r-nm">Via <em>Ottaviano</em></div><div class="r-ds" data-it="A due passi da San Pietro e dai Musei Vaticani" data-en="Steps from St Peter's and the Vatican Museums">A due passi da San Pietro e dai Musei Vaticani</div></div></div>
+      <div class="room-c ph"><div class="r-tag soon" data-it="Foto in arrivo" data-en="Photos coming">Foto in arrivo</div><div class="r-ov"><div class="r-loc">Aurelio · San Pietro</div><div class="r-nm">Via <em>Gregorio VII</em></div><div class="r-ds" data-it="Zona servita e comoda, vicino al Vaticano" data-en="Well-connected area, close to the Vatican">Zona servita e comoda, vicino al Vaticano</div></div></div>
+      <div class="room-c ph"><div class="r-tag soon" data-it="Foto in arrivo" data-en="Photos coming">Foto in arrivo</div><div class="r-ov"><div class="r-loc">Prati</div><div class="r-nm">Via <em>Angelo Emo</em></div><div class="r-ds" data-it="Ideale per turismo e lavoro" data-en="Ideal for tourism and business">Ideale per turismo e lavoro</div></div></div>
+    </div>
+    <p class="body-t rev" style="margin-top:1.6rem;font-style:italic" data-it="Le stanze disponibili, le foto e i prezzi aggiornati sono sul sito ufficiale, con prenotazione diretta e senza commissioni." data-en="Available rooms, photos and up-to-date prices are on the official site, with direct booking and no commissions.">Le stanze disponibili, le foto e i prezzi aggiornati sono sul sito ufficiale, con prenotazione diretta e senza commissioni.</p>
+  </div></section>
+  <section class="sec">
     <div class="eyebrow rev" data-it="Servizi" data-en="Services">Servizi</div>
     <h2 class="h2 rev" data-it="Roma, <em>su misura</em>" data-en="Rome, <em>tailored to you</em>">Roma, <em>su misura</em></h2>
     <div class="svc-g rev">
-      <div class="svc"><div class="n">✦</div><h3 data-it="Posizione Vaticano" data-en="Vatican location">Posizione Vaticano</h3><p data-it="Nel quartiere Prati, a pochi passi da San Pietro e dai Musei Vaticani." data-en="In the Prati district, steps from St Peter&#39;s and the Vatican Museums.">Nel quartiere Prati, a pochi passi da San Pietro e dai Musei Vaticani.</p></div>
+      <div class="svc"><div class="n">✦</div><h3 data-it="Posizione Vaticano" data-en="Vatican location">Posizione Vaticano</h3><p data-it="Nel quartiere Prati, a pochi passi da San Pietro e dai Musei Vaticani." data-en="In the Prati district, steps from St Peter's and the Vatican Museums.">Nel quartiere Prati, a pochi passi da San Pietro e dai Musei Vaticani.</p></div>
       <div class="svc"><div class="n">✦</div><h3 data-it="Check-in digitale" data-en="Digital check-in">Check-in digitale</h3><p data-it="Accesso autonomo e senza attese grazie al sistema Vikey." data-en="Self check-in with no waiting, thanks to the Vikey system.">Accesso autonomo e senza attese grazie al sistema Vikey.</p></div>
       <div class="svc"><div class="n">✦</div><h3 data-it="NCC &amp; Transfer" data-en="NCC &amp; Transfer">NCC &amp; Transfer</h3><p data-it="Transfer da e per aeroporti e stazioni, con autista dedicato." data-en="Transfers to and from airports and stations, with a dedicated driver.">Transfer da e per aeroporti e stazioni, con autista dedicato.</p></div>
       <div class="svc"><div class="n">✦</div><h3 data-it="Gite e tour" data-en="Trips &amp; tours">Gite e tour</h3><p data-it="Itinerari nella città eterna e nei dintorni, su richiesta." data-en="Itineraries in the Eternal City and surroundings, on request.">Itinerari nella città eterna e nei dintorni, su richiesta.</p></div>
@@ -564,47 +576,40 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
       <div class="g" onclick="openGal('roma')"><img src="https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260421-WA0006.jpg?updatedAt=1776802156165" alt="Golf Car Roma"></div>
       <div class="g" onclick="openGal('roma')"><img src="https://ik.imagekit.io/2gkrpnbbol/lastanzadiroma/IMG-20260424-WA0001%281%29.jpg" alt="Check-in digitale"></div>
     </div>
-    <p class="body-t rev" style="margin-top:1.6rem;font-style:italic" data-it="Le stanze disponibili e i prezzi aggiornati sono sul sito ufficiale, con prenotazione diretta." data-en="Available rooms and up-to-date prices are on the official site, with direct booking.">Le stanze disponibili e i prezzi aggiornati sono sul sito ufficiale, con prenotazione diretta.</p>
-  </div></section>
-
+  </section>
   <section class="backcta">
     <div class="eyebrow no-rule" data-it="Sito ufficiale" data-en="Official site">Sito ufficiale</div>
     <h2 data-it="Vedi le stanze e prenota a <em>Roma</em>" data-en="See the rooms and book in <em>Rome</em>">Vedi le stanze e prenota a <em>Roma</em></h2>
     <div class="row">
       <a class="btn btn-verd" href="https://lestanzediroma.it/" target="_blank" rel="noopener"><span data-it="Vai al sito principale" data-en="Go to the main site">Vai al sito principale</span> <span class="ar">↗</span></a>
-      <a class="btn btn-ghost" href="https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=882277&amp;room=909768" target="_blank" rel="noopener" data-it="Prenota ora" data-en="Book now">Prenota ora</a>
+      <div class="btn btn-ghost" onclick="goBack()" data-it="Torna indietro" data-en="Go back">Torna indietro</div>
     </div>
   </section>
 </div>
 
-<!-- ═══════════════════════════════ LE STANZE DI SHARM ═══════════════════════════════ -->
+<!-- ═══════════ LE STANZE DI SHARM ═══════════ -->
 <div id="page-sharm" class="page">
   <section class="ihero">
     <img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_003.jpeg" alt="Le Stanze di Sharm">
     <div class="ov"></div>
     <div class="ihero-c">
+      <div class="back" onclick="goBack()">← <span data-it="Indietro" data-en="Back">Indietro</span></div>
       <div class="eyebrow" data-it="Sharm el Sheikh · Coral Bay" data-en="Sharm el Sheikh · Coral Bay">Sharm el Sheikh · Coral Bay</div>
       <h1>Le Stanze di <em>Sharm</em></h1>
     </div>
   </section>
-
   <section class="sec">
     <div class="intro-grid">
-      <div class="rev"><div class="eyebrow" data-it="La struttura" data-en="The property">La struttura</div>
-        <div class="plaque"><span>N.</span><b>III</b></div>
-      </div>
+      <div class="rev"><div class="eyebrow" data-it="La struttura" data-en="The property">La struttura</div><div class="plaque"><span>N.</span><b>III</b></div></div>
       <div class="rev">
-        <p class="lead" data-it="Camere e appartamenti all&#39;interno del Coral Bay, a Sharm el Sheikh: a due passi dal mare, con accesso a tutte le strutture del resort e assistenza completa in italiano." data-en="Rooms and apartments inside Coral Bay in Sharm el Sheikh: steps from the sea, with access to all resort facilities and full Italian-speaking assistance.">Camere e appartamenti all'interno del Coral Bay, a Sharm el Sheikh: a due passi dal mare, con accesso a tutte le strutture del resort e assistenza completa in italiano.</p>
+        <p class="lead" data-it="Camere e appartamenti all'interno del prestigioso Domina Coral Bay, a Sharm el Sheikh: a due passi dal mare, con accesso a tutte le strutture del resort e assistenza completa in italiano." data-en="Rooms and apartments inside the prestigious Domina Coral Bay in Sharm el Sheikh: steps from the sea, with access to all resort facilities and full Italian-speaking assistance.">Camere e appartamenti all'interno del prestigioso Domina Coral Bay, a Sharm el Sheikh: a due passi dal mare, con accesso a tutte le strutture del resort e assistenza completa in italiano.</p>
         <p class="body-t" data-it="Transfer, escursioni e un punto di riferimento sempre disponibile: pensa solo a rilassarti sul Mar Rosso." data-en="Transfers, excursions and a reference point always available: just focus on relaxing by the Red Sea.">Transfer, escursioni e un punto di riferimento sempre disponibile: pensa solo a rilassarti sul Mar Rosso.</p>
       </div>
     </div>
   </section>
-
   <section class="sec stone"><div class="inner">
     <div class="room-hd">
-      <div class="rev"><div class="eyebrow" data-it="Le stanze" data-en="The rooms">Le stanze</div>
-        <h2 class="h2" data-it="Coral Bay · <em>disponibili</em>" data-en="Coral Bay · <em>available</em>">Coral Bay · <em>disponibili</em></h2>
-      </div>
+      <div class="rev"><div class="eyebrow" data-it="Le stanze" data-en="The rooms">Le stanze</div><h2 class="h2" data-it="Coral Bay · <em>disponibili</em>" data-en="Coral Bay · <em>available</em>">Coral Bay · <em>disponibili</em></h2></div>
       <span class="body-t rev" data-it="Clicca per la galleria" data-en="Click for the gallery">Clicca per la galleria</span>
     </div>
     <div class="room-g rev">
@@ -613,11 +618,8 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
       <div class="room-c" onclick="openGal('giorgia')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/foto_005.jpeg?updatedAt=1774875896728" alt="La Stanza di Giorgia"><div class="r-ov"><div class="r-loc">Coral Bay</div><div class="r-nm">La Stanza di <em>Giorgia</em></div><div class="r-ds" data-it="Premium · Terrazza sul mare" data-en="Premium · Sea-view terrace">Premium · Terrazza sul mare</div><div class="r-go" data-it="Vedi galleria →" data-en="View gallery →">Vedi galleria →</div></div></div>
       <div class="room-c" onclick="openGal('marina')"><img src="https://ik.imagekit.io/2gkrpnbbol/IMG-20260619-WA0076.jpg" alt="La Stanza di Marina"><div class="r-tag" data-it="⭐ Prima disponibile" data-en="⭐ First available">⭐ Prima disponibile</div><div class="r-ov"><div class="r-loc">Coral Bay</div><div class="r-nm">La Stanza di <em>Marina</em></div><div class="r-ds" data-it="Nel cuore del resort" data-en="In the heart of the resort">Nel cuore del resort</div><div class="r-go" data-it="Vedi foto →" data-en="View photo →">Vedi foto →</div></div></div>
     </div>
-
     <div class="room-hd rev" style="margin-top:3rem">
-      <div><div class="eyebrow" data-it="La Fontana · da marzo 2027" data-en="La Fontana · from March 2027">La Fontana · da marzo 2027</div>
-        <h2 class="h2" data-it="Presto <em>disponibili</em>" data-en="Coming <em>soon</em>">Presto <em>disponibili</em></h2>
-      </div>
+      <div><div class="eyebrow" data-it="Residence La Fontana · da marzo 2027" data-en="Residence La Fontana · from March 2027">Residence La Fontana · da marzo 2027</div><h2 class="h2" data-it="Presto <em>disponibili</em>" data-en="Coming <em>soon</em>">Presto <em>disponibili</em></h2></div>
     </div>
     <div class="room-g rev">
       <div class="room-c" onclick="openGal('angela')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0023.jpg?updatedAt=1774976281887" alt="La Stanza di Angela"><div class="r-tag soon" data-it="Marzo 2027" data-en="March 2027">Marzo 2027</div><div class="r-ov"><div class="r-loc">La Fontana</div><div class="r-nm">La Stanza di <em>Angela</em></div></div></div>
@@ -625,36 +627,64 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
       <div class="room-c" onclick="openGal('giusy')"><img src="https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260331-WA0022.jpg?updatedAt=1774976011912" alt="La Stanza di Giusy"><div class="r-tag soon" data-it="Marzo 2027" data-en="March 2027">Marzo 2027</div><div class="r-ov"><div class="r-loc">La Fontana</div><div class="r-nm">La Stanza di <em>Giusy</em></div></div></div>
     </div>
   </div></section>
-
   <section class="sec">
     <div class="eyebrow rev" data-it="Servizi" data-en="Services">Servizi</div>
     <h2 class="h2 rev" data-it="Il tuo Mar Rosso, <em>senza pensieri</em>" data-en="Your Red Sea, <em>worry-free</em>">Il tuo Mar Rosso, <em>senza pensieri</em></h2>
     <div class="svc-g rev">
-      <div class="svc"><div class="n">✦</div><h3 data-it="Transfer aeroporto" data-en="Airport transfer">Transfer aeroporto</h3><p data-it="Ti accogliamo all&#39;arrivo e ti accompagniamo alla struttura." data-en="We meet you on arrival and take you to the property.">Ti accogliamo all'arrivo e ti accompagniamo alla struttura.</p></div>
+      <div class="svc"><div class="n">✦</div><h3 data-it="Transfer aeroporto" data-en="Airport transfer">Transfer aeroporto</h3><p data-it="Ti accogliamo all'arrivo e ti accompagniamo alla struttura." data-en="We meet you on arrival and take you to the property.">Ti accogliamo all'arrivo e ti accompagniamo alla struttura.</p></div>
       <div class="svc"><div class="n">✦</div><h3 data-it="Escursioni" data-en="Excursions">Escursioni</h3><p data-it="Ras Mohammed, safari nel deserto, quad e uscite in barca sul Mar Rosso." data-en="Ras Mohammed, desert safari, quad biking and Red Sea boat trips.">Ras Mohammed, safari nel deserto, quad e uscite in barca sul Mar Rosso.</p></div>
       <div class="svc"><div class="n">✦</div><h3 data-it="Assistenza italiana" data-en="Italian assistance">Assistenza italiana</h3><p data-it="Un riferimento in italiano prima e durante tutto il soggiorno." data-en="An Italian-speaking contact before and throughout your stay.">Un riferimento in italiano prima e durante tutto il soggiorno.</p></div>
     </div>
   </section>
-
   <section class="backcta">
     <div class="eyebrow no-rule" data-it="Sito ufficiale" data-en="Official site">Sito ufficiale</div>
     <h2 data-it="Prenota il tuo soggiorno a <em>Sharm</em>" data-en="Book your stay in <em>Sharm</em>">Prenota il tuo soggiorno a <em>Sharm</em></h2>
     <div class="row">
       <a class="btn btn-verd" href="https://lestanzedisharm.com/" target="_blank" rel="noopener"><span data-it="Vai al sito principale" data-en="Go to the main site">Vai al sito principale</span> <span class="ar">↗</span></a>
-      <a class="btn btn-ghost" href="https://book.octorate.com/octobook/site/reservation/calendar.xhtml?codice=990489&amp;room=911991" target="_blank" rel="noopener" data-it="Prenota ora" data-en="Book now">Prenota ora</a>
+      <div class="btn btn-ghost" onclick="goBack()" data-it="Torna indietro" data-en="Go back">Torna indietro</div>
     </div>
   </section>
 </div>
 
-<!-- ═══════════════════════════════ CONTATTI ═══════════════════════════════ -->
+<!-- ═══════════ DICONO DI NOI ═══════════ -->
+<div id="page-dicono" class="page">
+  <section class="ihero typographic">
+    <div class="ihero-c">
+      <div class="back" onclick="goBack()">← <span data-it="Indietro" data-en="Back">Indietro</span></div>
+      <div class="eyebrow" data-it="Rassegna stampa" data-en="Press">Rassegna stampa</div>
+      <h1 data-it="Dicono di <em>noi</em>" data-en="They talk <em>about us</em>">Dicono di <em>noi</em></h1>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="intro-grid">
+      <div class="rev"><div class="eyebrow" data-it="In evidenza" data-en="Featured">In evidenza</div></div>
+      <div class="rev"><p class="lead" data-it="Il progetto Le Stanze raccontato dai media: interviste e articoli sulla nostra idea di ospitalità autentica, tra Roma e il Mar Rosso." data-en="The Le Stanze project as told by the media: interviews and articles on our idea of authentic hospitality, between Rome and the Red Sea.">Il progetto Le Stanze raccontato dai media: interviste e articoli sulla nostra idea di ospitalità autentica, tra Roma e il Mar Rosso.</p></div>
+    </div>
+    <div class="press rev">
+      <div class="src">Zona Roma Nord · <span data-it="1 luglio 2026" data-en="1 July 2026">1 luglio 2026</span></div>
+      <h3 data-it="Da Roma a Sharm: il progetto Le Stanze cresce tra Italia ed Egitto" data-en="From Rome to Sharm: the Le Stanze project grows between Italy and Egypt">Da Roma a Sharm: il progetto Le Stanze cresce tra Italia ed Egitto</h3>
+      <p data-it="Intervista a Massimiliano De Santis, fondatore di MDS Properties e ideatore di Le Stanze: dalle origini del progetto a Roma all'espansione sul Mar Rosso, fino agli investimenti immobiliari tra Italia ed Egitto e a un'idea di accoglienza autentica, familiare e diretta." data-en="Interview with Massimiliano De Santis, founder of MDS Properties and creator of Le Stanze: from the project's origins in Rome to its expansion on the Red Sea, through real-estate investment between Italy and Egypt and an idea of authentic, family-run, direct hospitality.">Intervista a Massimiliano De Santis, fondatore di MDS Properties e ideatore di Le Stanze: dalle origini del progetto a Roma all'espansione sul Mar Rosso, fino agli investimenti immobiliari tra Italia ed Egitto e a un'idea di accoglienza autentica, familiare e diretta.</p>
+      <a class="link-u" href="https://zonaromanord.it/da-roma-a-sharm-il-progetto-le-stanze-cresce-tra-italia-ed-egitto/" target="_blank" rel="noopener"><span data-it="Leggi l'intervista" data-en="Read the interview">Leggi l'intervista</span> <span class="ar">↗</span></a>
+    </div>
+  </section>
+  <section class="backcta">
+    <h2 data-it="Torna a esplorare <em>Le Stanze</em>" data-en="Back to exploring <em>Le Stanze</em>">Torna a esplorare <em>Le Stanze</em></h2>
+    <div class="row">
+      <div class="btn btn-verd" onclick="sp('home')" data-it="Torna alla home" data-en="Back to home">Torna alla home</div>
+      <div class="btn btn-ghost" onclick="goBack()" data-it="Torna indietro" data-en="Go back">Torna indietro</div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════ CONTATTI ═══════════ -->
 <div id="page-contatti" class="page">
   <section class="ihero typographic">
     <div class="ihero-c">
-      <div class="eyebrow" data-it="Parliamone" data-en="Let&#39;s talk">Parliamone</div>
+      <div class="back" onclick="goBack()">← <span data-it="Indietro" data-en="Back">Indietro</span></div>
+      <div class="eyebrow" data-it="Parliamone" data-en="Let's talk">Parliamone</div>
       <h1 data-it="Contatti" data-en="Contact">Contatti</h1>
     </div>
   </section>
-
   <section class="sec">
     <div class="intro-grid">
       <div class="rev"><div class="eyebrow" data-it="Un unico riferimento" data-en="One point of contact">Un unico riferimento</div></div>
@@ -663,8 +693,7 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
     <div class="cc-g rev">
       <div class="cc">
         <svg class="ic" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"></circle><path d="M16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.9.5 3.7 1.4 5.2L5.5 26.5l5.5-1.4c1.5.8 3.1 1.3 5 1.3 5.8 0 10.5-4.7 10.5-10.5S21.8 5.5 16 5.5zm5.3 14.3c-.2.6-1.2 1.1-1.7 1.2-.4.1-.9.1-2.6-.6-2.2-.8-3.6-3-3.7-3.1-.1-.2-1-1.3-1-2.5 0-1.2.6-1.8.9-2 .2-.2.4-.3.6-.3h.5c.1 0 .3 0 .5.4l.7 1.7c.1.1.1.3 0 .4l-.3.4c-.1.1-.2.3-.1.5.2.3.7 1 1.4 1.7.6.6 1.3.9 1.5.9.2.1.4.1.5-.1l.7-.9c.2-.2.4-.2.6-.1l1.7.8c.2.1.3.2.3.4 0 .1.1.4-.1 1z" fill="#fff"></path></svg>
-        <h3>WhatsApp</h3>
-        <div class="sub">Massimiliano</div>
+        <h3>WhatsApp</h3><div class="sub">Massimiliano</div>
         <a class="big" href="https://wa.me/393932626399" target="_blank" rel="noopener">+39 393 262 6399</a>
       </div>
       <div class="cc">
@@ -676,19 +705,21 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
       <div class="cc">
         <div class="ic" style="display:flex;align-items:center;justify-content:center;font-family:var(--ser);font-style:italic;font-size:1.8rem;color:var(--verd)">S</div>
         <h3>Le Stanze di Sharm</h3>
-        <div class="sub" data-it="Coral Bay · Sharm el Sheikh" data-en="Coral Bay · Sharm el Sheikh">Coral Bay · Sharm el Sheikh</div>
+        <div class="sub" data-it="Domina Coral Bay · Sharm el Sheikh" data-en="Domina Coral Bay · Sharm el Sheikh">Domina Coral Bay · Sharm el Sheikh</div>
         <div class="cc-links"><a href="https://lestanzedisharm.com/" target="_blank" rel="noopener">Sito ↗</a><a href="https://www.instagram.com/lestanzedisharm" target="_blank" rel="noopener">Instagram</a></div>
       </div>
     </div>
   </section>
-
   <section class="backcta">
     <h2 data-it="Torna a esplorare <em>Le Stanze</em>" data-en="Back to exploring <em>Le Stanze</em>">Torna a esplorare <em>Le Stanze</em></h2>
-    <div class="row"><div class="btn btn-verd" onclick="sp('home')" data-it="Torna alla home" data-en="Back to home">Torna alla home</div></div>
+    <div class="row">
+      <div class="btn btn-verd" onclick="sp('home')" data-it="Torna alla home" data-en="Back to home">Torna alla home</div>
+      <div class="btn btn-ghost" onclick="goBack()" data-it="Torna indietro" data-en="Go back">Torna indietro</div>
+    </div>
   </section>
 </div>
 
-<!-- ═══════════ LIGHTBOX ═══════════ -->
+<!-- LIGHTBOX -->
 <div class="lb" id="lb">
   <button class="lb-x" onclick="lbClose()" aria-label="Chiudi">×</button>
   <button class="lb-a lb-p" onclick="lbNav(-1)" aria-label="Precedente">‹</button>
@@ -697,13 +728,12 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
   <div class="lb-c" id="lbc"></div>
 </div>
 
-<!-- ═══════════ WHATSAPP FLOAT ═══════════ -->
+<!-- WHATSAPP FLOAT -->
 <a id="wa" href="https://wa.me/393932626399" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
   <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"></circle><path d="M16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.9.5 3.7 1.4 5.2L5.5 26.5l5.5-1.4c1.5.8 3.1 1.3 5 1.3 5.8 0 10.5-4.7 10.5-10.5S21.8 5.5 16 5.5zm5.3 14.3c-.2.6-1.2 1.1-1.7 1.2-.4.1-.9.1-2.6-.6-2.2-.8-3.6-3-3.7-3.1-.1-.2-1-1.3-1-2.5 0-1.2.6-1.8.9-2 .2-.2.4-.3.6-.3h.5c.1 0 .3 0 .5.4l.7 1.7c.1.1.1.3 0 .4l-.3.4c-.1.1-.2.3-.1.5.2.3.7 1 1.4 1.7.6.6 1.3.9 1.5.9.2.1.4.1.5-.1l.7-.9c.2-.2.4-.2.6-.1l1.7.8c.2.1.3.2.3.4 0 .1.1.4-.1 1z" fill="#fff"></path></svg>
 </a>
 
 <script>
-// ─── GALLERIES (real photos) ───
 const GAL = {
   gabriele:[
     'https://ik.imagekit.io/2gkrpnbbol/lestanzedisharm/IMG-20260424-WA0003.jpg?updatedAt=1777051212445',
@@ -741,12 +771,14 @@ const GAL = {
   ]
 };
 
-// ─── PAGE ROUTING ───
-const PAGES=['home','mds','roma','sharm','contatti'];
-function sp(id){
+// ─── PAGE ROUTING + HISTORY ───
+const PAGES=['home','mds','roma','sharm','dicono','contatti'];
+let CURRENT='home', HIST=[];
+function sp(id,isBack){
+  if(!isBack && id!==CURRENT) HIST.push(CURRENT);
   PAGES.forEach(p=>{const e=document.getElementById('page-'+p);if(e)e.classList.remove('on')});
   const t=document.getElementById('page-'+id);
-  if(t){t.classList.add('on');window.scrollTo({top:0,behavior:'auto'})}
+  if(t){t.classList.add('on');CURRENT=id;window.scrollTo({top:0,behavior:'auto'})}
   closeMM();
   const nav=document.getElementById('nav');
   if(id==='home')nav.classList.toggle('sc',window.scrollY>50);
@@ -754,6 +786,7 @@ function sp(id){
   if(window._initRev)window._initRev();
 }
 function mn(id){sp(id)}
+function goBack(){const p=HIST.pop();sp(p||'home',true)}
 
 // ─── MENU ───
 function tmm(){
@@ -769,23 +802,18 @@ function closeMM(){
   document.getElementById('nav').classList.remove('hidden');
   document.body.style.overflow='';
 }
-
-// ─── NAV SCROLL ───
 window.addEventListener('scroll',()=>{
-  const onHome=document.getElementById('page-home').classList.contains('on');
-  if(onHome)document.getElementById('nav').classList.toggle('sc',window.scrollY>50);
+  if(document.getElementById('page-home').classList.contains('on'))
+    document.getElementById('nav').classList.toggle('sc',window.scrollY>50);
 });
 
 // ─── LIGHTBOX ───
 let lbKeys=[],lbIdx=0;
-function openGal(key){
-  lbKeys=GAL[key]||[];if(!lbKeys.length)return;lbIdx=0;showLb();
-}
+function openGal(key){lbKeys=GAL[key]||[];if(!lbKeys.length)return;lbIdx=0;showLb()}
 function showLb(){
   document.getElementById('lbi').src=lbKeys[lbIdx];
   document.getElementById('lbc').textContent=lbKeys.length>1?(lbIdx+1)+' / '+lbKeys.length:'';
-  document.getElementById('lb').classList.add('on');
-  document.body.style.overflow='hidden';
+  document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden';
 }
 function lbClose(){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
 function lbNav(d){if(!lbKeys.length)return;lbIdx=(lbIdx+d+lbKeys.length)%lbKeys.length;showLb()}
