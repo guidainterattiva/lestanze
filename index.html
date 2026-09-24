@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://ik.imagekit.io/2gkrpnbbol/WhatsApp%20Image%202026-07-01%20at%2011.28.55.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -87,11 +87,33 @@ nav.sc .brand img{border-color:var(--line)}
 .brand-t{font-family:var(--ser);font-size:1.05rem;font-weight:400;letter-spacing:.02em;color:#fff;transition:color .4s;white-space:nowrap}
 nav.sc .brand-t{color:var(--ink)}
 .nav-r{display:flex;align-items:center;gap:.55rem}
-#lang-btn{background:none;border:1px solid rgba(255,255,255,.45);color:#fff;font-family:var(--san);font-size:.58rem;
-  font-weight:600;letter-spacing:.16em;padding:.5rem .8rem;cursor:pointer;transition:all .3s}
-#lang-btn:hover{background:rgba(255,255,255,.14)}
-nav.sc #lang-btn{color:var(--ink);border-color:var(--line)}
-nav.sc #lang-btn:hover{background:var(--ink);color:var(--paper)}
+
+/* LANGUAGE SWITCHER (9 languages) */
+.lang-switch{position:relative}
+.lang-trigger{display:flex;align-items:center;gap:.35rem;background:none;border:1px solid rgba(255,255,255,.45);
+  color:#fff;font-family:var(--san);font-size:.58rem;font-weight:600;letter-spacing:.14em;padding:.5rem .75rem;
+  cursor:pointer;transition:all .3s;text-transform:uppercase}
+.lang-trigger:hover{background:rgba(255,255,255,.14)}
+nav.sc .lang-trigger{color:var(--ink);border-color:var(--line)}
+nav.sc .lang-trigger:hover{background:var(--ink);color:var(--paper)}
+#mm .lang-trigger{color:var(--ink);border-color:var(--line)}
+#mm .lang-trigger:hover{background:var(--ink);color:var(--paper)}
+.lang-trigger-flag{font-size:.95rem;line-height:1;letter-spacing:0}
+.lang-trigger-caret{font-size:.55rem;opacity:.7}
+.lang-panel{position:absolute;top:calc(100% + 8px);right:0;background:var(--paper);border:1px solid var(--line);
+  box-shadow:0 14px 34px rgba(22,33,30,.18);min-width:174px;max-height:65vh;overflow-y:auto;padding:.3rem;
+  z-index:500;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .18s}
+.lang-switch.open .lang-panel{opacity:1;visibility:visible;transform:translateY(0)}
+.lang-opt{display:flex;align-items:center;gap:.6rem;width:100%;background:none;border:none;text-align:left;
+  padding:.55rem .65rem;font-family:var(--san);font-size:.75rem;color:var(--ink);cursor:pointer;
+  transition:background .15s;letter-spacing:0}
+.lang-opt:hover{background:rgba(52,95,85,.1)}
+.lang-opt.active{background:rgba(52,95,85,.14);font-weight:600;color:var(--verd)}
+.lang-opt-flag{font-size:1rem;line-height:1}
+html[dir="rtl"] .lang-panel{right:auto;left:0}
+body.rtl-active{font-family:'Noto Sans Arabic',var(--san)}
+body.rtl-active *{letter-spacing:0 !important}
+@media(max-width:400px){.lang-trigger{padding:.42rem .55rem;gap:.25rem}.lang-trigger-code{display:none}}
 @media(max-width:620px){.brand-t{font-size:.92rem}}
 
 /* MENU */
@@ -308,7 +330,12 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
     </div>
   </div>
   <div class="nav-r">
-    <button id="lang-btn" onclick="toggleLang()">EN</button>
+    <div class="lang-switch" id="ls-nav" onclick="toggleLangPanel(this)">
+      <button type="button" class="lang-trigger" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-trigger-flag">🇮🇹</span><span class="lang-trigger-code">IT</span><span class="lang-trigger-caret">▾</span>
+      </button>
+      <div class="lang-panel"></div>
+    </div>
   </div>
 </nav>
 
@@ -318,6 +345,12 @@ footer{background:#0F1815;color:rgba(255,255,255,.62);padding:clamp(3rem,6vw,4.5
   <div class="mm-hd">
     <span class="brand-t">Le Stanze</span>
     <button class="mm-x" onclick="tmm()" aria-label="Chiudi">×</button>
+  </div>
+  <div class="lang-switch" id="ls-mob" onclick="toggleLangPanel(this)" style="margin-bottom:1rem">
+    <button type="button" class="lang-trigger" aria-haspopup="true" aria-expanded="false">
+      <span class="lang-trigger-flag">🇮🇹</span><span class="lang-trigger-code">IT</span><span class="lang-trigger-caret">▾</span>
+    </button>
+    <div class="lang-panel"></div>
   </div>
   <a onclick="mn('home')"><span data-it="Home" data-en="Home">Home</span></a>
   <a onclick="mn('mds')"><span>MDS Properties</span><small data-it="il gruppo" data-en="the group">il gruppo</small></a>
@@ -943,6 +976,11 @@ function sp(id,isBack){
   if(id==='home')nav.classList.toggle('sc',window.scrollY>50);
   else nav.classList.add('sc');
   if(window._initRev)window._initRev();
+  if(currentLang!=='it'&&currentLang!=='en'){
+    var token=langToken;
+    scanNodes(document.body,autoEntries);
+    applyAutoLang(currentLang,token);
+  }
 }
 function mn(id){sp(id)}
 function goBack(){const p=HIST.pop();sp(p||'home',true)}
@@ -989,17 +1027,270 @@ document.addEventListener('keydown',e=>{
   window._initRev();
 })();
 
-// ─── LANGUAGE (IT / EN) ───
-let LANG='it';
-function applyLang(){
-  document.querySelectorAll('[data-it]').forEach(el=>{
-    const v=LANG==='en'?(el.getAttribute('data-en')??el.getAttribute('data-it')):el.getAttribute('data-it');
-    if(v!=null)el.innerHTML=v;
-  });
-  document.documentElement.lang=LANG;
-  const b=document.getElementById('lang-btn');if(b)b.textContent=LANG==='it'?'EN':'IT';
+// ─── LANGUAGE SYSTEM (9 languages) ───
+// IT = original DOM text. EN = hand-curated via data-en (unchanged from before).
+// FR/DE/ES/RU/PT/PL/AR = free machine translation (Google Translate → MyMemory fallback), cached in localStorage.
+var LANG_META={
+  it:{flag:'🇮🇹',name:'Italiano'}, en:{flag:'🇬🇧',name:'English'},
+  fr:{flag:'🇫🇷',name:'Français'}, de:{flag:'🇩🇪',name:'Deutsch'},
+  es:{flag:'🇪🇸',name:'Español'},  ru:{flag:'🇷🇺',name:'Русский'},
+  pt:{flag:'🇵🇹',name:'Português'}, pl:{flag:'🇵🇱',name:'Polski'},
+  ar:{flag:'🇸🇦',name:'العربية'}
+};
+var SUPPORTED_LANGS=Object.keys(LANG_META);
+var RTL_LANGS=['ar'];
+var currentLang='it';
+var langToken=0;
+
+// Brand names, place names and room/address proper names never get translated
+var PROTECTED_TERMS=[
+  'MDS Properties & Consulting','MDS Properties and Consulting','MDS Properties',
+  'Le Stanze di Pescorocchiano','Le Stanze di Roma','Le Stanze di Sharm','Le Stanze',
+  'Massimiliano De Santis','Massimiliano','Damiano De Santis','Er Faina',
+  'Sharm el Sheikh','Coral Bay','Pescorocchiano','Cicolano','Lago del Salto','Valle del Salto',
+  'Montagne della Duchessa','montagne della Duchessa','Borgorose','Via del Cavaliere',
+  'Gregorio VII','Angelo Emo','Ottaviano',
+  'Gabriele','Valentina','Giorgia','Marina','Angela','Ornello','Giusy',
+  'Zona Roma Nord','Roma Capitale Magazine',
+  'lestanze.info','mdsproperties.it','lestanzediroma.it','lestanzedisharm.com','lestanzedipescorocchiano.it',
+  'IT15337781007'
+];
+var PROTECTED_RE=new RegExp(
+  PROTECTED_TERMS.slice().sort(function(a,b){return b.length-a.length;})
+    .map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}).join('|'),'g');
+function protectTerms(text){
+  var found=[];
+  var out=text.replace(PROTECTED_RE,function(m){found.push(m);return 'QZ'+(found.length-1)+'ZQ';});
+  return {text:out,found:found};
 }
-function toggleLang(){LANG=LANG==='it'?'en':'it';applyLang()}
-applyLang();
+function unprotectTerms(text,found){
+  var restored=0;
+  var out=text.replace(/QZ\s*([0-9]+)\s*ZQ/gi,function(m,d){
+    var idx=parseInt(d,10);
+    if(found[idx]===undefined) return m;
+    restored++;return found[idx];
+  });
+  return restored===found.length?out:null;
+}
+
+// Cache (localStorage) so a string never gets translated twice
+var TR_PREFIX='lestanze_tr_';
+var trCache={};
+function getCache(l){
+  if(!trCache[l]){try{trCache[l]=JSON.parse(localStorage.getItem(TR_PREFIX+l)||'{}');}catch(e){trCache[l]={};}}
+  return trCache[l];
+}
+function saveCache(l){try{localStorage.setItem(TR_PREFIX+l,JSON.stringify(trCache[l]||{}));}catch(e){}}
+
+// Translation engine: Google Translate (free) → MyMemory fallback (chunked, ~450 byte limit)
+function splitForFallback(text){
+  var limit=450;
+  var size=function(s){return new Blob([s]).size;};
+  if(size(text)<=limit) return [text];
+  var sentences=text.split(/(?<=[.!?])\s+/);
+  var chunks=[];var buf='';
+  for(var i=0;i<sentences.length;i++){
+    var s=sentences[i];
+    if(!buf){buf=s;continue;}
+    if(size(buf+' '+s)<=limit) buf+=' '+s;
+    else{chunks.push(buf);buf=s;}
+  }
+  if(buf) chunks.push(buf);
+  var final=[];
+  for(var j=0;j<chunks.length;j++){
+    var ch=chunks[j];
+    if(size(ch)<=limit){final.push(ch);continue;}
+    var cur='';
+    var words=ch.split(/\s+/);
+    for(var k=0;k<words.length;k++){
+      var w=words[k];
+      if(cur&&size(cur+' '+w)>limit){final.push(cur);cur=w;}
+      else cur=cur?cur+' '+w:w;
+    }
+    if(cur) final.push(cur);
+  }
+  return final;
+}
+async function rawTranslate(text,tl){
+  var out=null;
+  try{
+    var url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=it&tl='+encodeURIComponent(tl)+'&dt=t&q='+encodeURIComponent(text);
+    var data=await(await fetch(url)).json();
+    if(Array.isArray(data)&&Array.isArray(data[0])){
+      var j=data[0].map(function(seg){return seg[0];}).join('');
+      if(j&&j.trim()) out=j;
+    }
+  }catch(e){}
+  if(!out){
+    try{
+      var pieces=splitForFallback(text);
+      var done=[];
+      for(var i=0;i<pieces.length;i++){
+        var url2='https://api.mymemory.translated.net/get?q='+encodeURIComponent(pieces[i])+'&langpair=it|'+encodeURIComponent(tl);
+        var d2=await(await fetch(url2)).json();
+        if(d2.responseStatus===200&&d2.responseData&&d2.responseData.translatedText){
+          done.push(d2.responseData.translatedText);
+        }else{done.length=0;break;}
+      }
+      if(done.length) out=done.join(' ');
+    }catch(e){}
+  }
+  return out;
+}
+async function translateText(text,tl){
+  if(!text||!text.trim()||tl==='it') return text;
+  var cache=getCache(tl);
+  var key=text.trim();
+  if(Object.prototype.hasOwnProperty.call(cache,key)) return cache[key];
+  var out=null;
+  var prot=protectTerms(text);
+  if(prot.found.length){
+    var raw=await rawTranslate(prot.text,tl);
+    if(raw) out=unprotectTerms(raw,prot.found);
+  }
+  if(!out) out=await rawTranslate(text,tl);
+  if(out){cache[key]=out;saveCache(tl);}
+  return out;
+}
+async function runPooled(items,worker,poolSize){
+  var queue=items.slice();
+  var runners=[];
+  for(var i=0;i<Math.min(poolSize,queue.length);i++){
+    runners.push((async function(){
+      while(queue.length){var item=queue.shift();try{await worker(item);}catch(e){}}
+    })());
+  }
+  await Promise.all(runners);
+}
+
+// Text-node registry: only chrome (nav/menu, outside any .page) + the currently OPEN page.
+// Other pages get scanned lazily the moment they're opened (see sp()), so switching language
+// never fires dozens of unnecessary translation calls for pages the visitor hasn't seen yet.
+var AUTO_SKIP='.lang-switch,script,style,noscript,[data-no-translate]';
+var autoEntries=[];
+var scannedNodes=new WeakSet();
+function scanNodes(root,list){
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(node){
+      var txt=node.nodeValue;
+      if(!txt||txt.trim().length<2) return NodeFilter.FILTER_REJECT;
+      if(!/[a-zàèéìòùA-ZÀ-Ù]{2}/.test(txt)) return NodeFilter.FILTER_REJECT;
+      var pe=node.parentElement;
+      if(!pe||pe.closest(AUTO_SKIP)) return NodeFilter.FILTER_REJECT;
+      var pg=pe.closest('.page');
+      if(pg&&!pg.classList.contains('on')) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  var n;
+  while((n=walker.nextNode())){
+    if(scannedNodes.has(n)) continue;
+    scannedNodes.add(n);
+    list.push({node:n,original:n.nodeValue,applied:false,done:false});
+  }
+}
+function restoreRegistry(){
+  autoEntries.forEach(function(e){if(e.applied&&e.node.isConnected) e.node.nodeValue=e.original;});
+  autoEntries=[];
+  scannedNodes=new WeakSet();
+}
+async function applyAutoLang(tl,token){
+  var byKey=new Map();
+  autoEntries.forEach(function(e){
+    if(e.done) return;
+    if(!e.node.isConnected||e.node.nodeValue!==e.original){e.done=true;return;}
+    var key=e.original.trim();
+    if(!byKey.has(key)) byKey.set(key,[]);
+    byKey.get(key).push(e);
+  });
+  if(!byKey.size) return;
+  var cache=getCache(tl);
+  Array.from(byKey.keys()).forEach(function(key){
+    if(Object.prototype.hasOwnProperty.call(cache,key)){
+      byKey.get(key).forEach(function(e){
+        if(e.node.isConnected&&e.node.nodeValue===e.original){
+          e.node.nodeValue=cache[key];e.applied=true;e.done=true;
+        }
+      });
+      byKey.delete(key);
+    }
+  });
+  if(!byKey.size) return;
+  await runPooled(Array.from(byKey.keys()),async function(key){
+    var tr=await translateText(key,tl);
+    if(!tr||token!==langToken) return;
+    byKey.get(key).forEach(function(e){
+      if(e.node.isConnected&&e.node.nodeValue===e.original){
+        e.node.nodeValue=tr;e.applied=true;e.done=true;
+      }
+    });
+  },5);
+}
+
+// Applies the hand-curated IT / EN texts from data-it / data-en
+function applyStaticLang(l){
+  document.querySelectorAll('[data-it]').forEach(function(el){
+    var v=l==='en'?(el.getAttribute('data-en')??el.getAttribute('data-it')):el.getAttribute('data-it');
+    if(v!=null) el.innerHTML=v;
+  });
+}
+
+// Main language switch
+async function setLang(l){
+  if(SUPPORTED_LANGS.indexOf(l)===-1) l='it';
+  var token=++langToken;
+  restoreRegistry();
+  applyStaticLang('it');
+  currentLang=l;
+  document.documentElement.lang=l;
+  if(RTL_LANGS.indexOf(l)>-1){
+    document.documentElement.setAttribute('dir','rtl');
+    document.body.classList.add('rtl-active');
+  }else{
+    document.documentElement.removeAttribute('dir');
+    document.body.classList.remove('rtl-active');
+  }
+  renderLangSwitchers();
+  if(l==='it') return;
+  if(l==='en'){applyStaticLang('en');return;}
+  // FR/DE/ES/RU/PT/PL/AR — automatic translation, chrome + currently open page
+  scanNodes(document.body,autoEntries);
+  document.querySelectorAll('.lang-trigger').forEach(function(t){t.style.opacity='.55'});
+  await applyAutoLang(l,token);
+  if(token===langToken) document.querySelectorAll('.lang-trigger').forEach(function(t){t.removeAttribute('style')});
+}
+
+// Dropdown UI
+function langOptionsHTML(active){
+  return SUPPORTED_LANGS.map(function(code){
+    var m=LANG_META[code];
+    return '<button type="button" class="lang-opt'+(code===active?' active':'')+'" onclick="selectLang(\''+code+'\')"><span class="lang-opt-flag">'+m.flag+'</span><span class="lang-opt-name">'+m.name+'</span></button>';
+  }).join('');
+}
+function renderLangSwitchers(){
+  document.querySelectorAll('.lang-switch').forEach(function(sw){
+    var trigger=sw.querySelector('.lang-trigger');
+    var panel=sw.querySelector('.lang-panel');
+    if(trigger) trigger.innerHTML='<span class="lang-trigger-flag">'+LANG_META[currentLang].flag+'</span><span class="lang-trigger-code">'+currentLang.toUpperCase()+'</span><span class="lang-trigger-caret">▾</span>';
+    if(panel) panel.innerHTML=langOptionsHTML(currentLang);
+  });
+}
+function closeLangPanels(){
+  document.querySelectorAll('.lang-switch.open').forEach(function(sw){
+    sw.classList.remove('open');
+    var t=sw.querySelector('.lang-trigger');if(t) t.setAttribute('aria-expanded','false');
+  });
+}
+function toggleLangPanel(sw){
+  var isOpen=sw.classList.contains('open');
+  closeLangPanels();
+  if(!isOpen){sw.classList.add('open');var t=sw.querySelector('.lang-trigger');if(t) t.setAttribute('aria-expanded','true');}
+}
+function selectLang(l){setLang(l);closeLangPanels();}
+document.addEventListener('click',function(e){document.querySelectorAll('.lang-switch.open').forEach(function(sw){if(!sw.contains(e.target)) closeLangPanels();});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape') closeLangPanels();});
+
+applyStaticLang('it');
+renderLangSwitchers();
 </script>
 </body></html>
